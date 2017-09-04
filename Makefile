@@ -1,10 +1,10 @@
 NAME = libftprintf.a
 
-SRC = Core_function.c  ft_strlen.c ft_putnbr.c ft_putstr.c ft_putchar.c ft_intflag.c ft_atoi.c ft_itoa_base_large.c ft_itoa_base.c\
+SRC = Core_function.c  ft_strlen.c ft_putnbr.c ft_putstr.c ft_putchar.c ft_intflag.c ft_atoi.c ft_itoa_base_large.c ft_itoa_base.c ll_itoa_base.c\
 
 INCLUDES = includes
 
-BRICK = Core_function.o ft_strlen.o ft_putnbr.o ft_putstr.o ft_putchar.o ft_intflag.o ft_atoi.o ft_itoa_base_large.o ft_itoa_base.o\
+BRICK = Core_function.o ft_strlen.o ft_putnbr.o ft_putstr.o ft_putchar.o ft_intflag.o ft_atoi.o ft_itoa_base_large.o ft_itoa_base.o ll_itoa_base.o\
 
 # LIBFT_PATH = libft/
 # LIBFT_LIB = libft/libft.a

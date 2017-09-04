@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/02 23:34:43 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/09/03 01:01:34 by jchenaud         ###   ########.fr       */
+/*   Updated: 2017/09/04 06:43:56 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,19 @@
 
 // }
 
-int ft_inc_intflag(int nb)
+int ft_have_val(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] && str[i] == '0')
+		i++;
+	if (str[i] && str[i] != '0')
+		return (1);
+	return(0);
+}
+
+int ft_inc_intflag(int nb,t_env *e)
 {
 	int neg;
 	int c;
@@ -47,7 +59,7 @@ int ft_inc_intflag(int nb)
 			c *= 10;
 			n++; 
 		}
-		return (n + neg);
+		return (n + neg + e->zero);
 	}
 	return(11);
 
@@ -83,6 +95,11 @@ int ft_int_flag_return_value(const char *str,unsigned int i,t_env *e)
 	if (str[i + 1] == int_flag[f] && int_flag[f] && int_flag[f] != '.')
 	{
 		nb = ft_atoi(&str[i+1]);
+		while (str[i+1] == '0')
+		{
+			e->zero++;
+			i++;
+		}
 		return (nb);
 	}
 	else if (int_flag[f] == '.')
