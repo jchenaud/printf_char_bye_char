@@ -6,13 +6,13 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 15:48:58 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/09/03 01:38:27 by jchenaud         ###   ########.fr       */
+/*   Updated: 2017/11/18 14:48:00 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_size(unsigned long nbr, int base)
+static int	ft_size(uintmax_t nbr, int base)
 {
 	int i;
 
@@ -25,7 +25,7 @@ static int	ft_size(unsigned long nbr, int base)
 	return (i);
 }
 
-static void	ft_recursive_min(char *str, unsigned long nbr, int base, int i)
+static void	ft_recursive_min(char *str, uintmax_t nbr, int base, int i)
 {
 	char *t;
 
@@ -35,7 +35,7 @@ static void	ft_recursive_min(char *str, unsigned long nbr, int base, int i)
 	str[i - 1] = t[nbr % base];
 }
 
-static void	ft_recursive_maj(char *str, unsigned long nbr, int base, int i)
+static void	ft_recursive_maj(char *str, uintmax_t nbr, int base, int i)
 {
 	char *t;
 
@@ -45,7 +45,7 @@ static void	ft_recursive_maj(char *str, unsigned long nbr, int base, int i)
 	str[i - 1] = t[nbr % base];
 }
 
-char		*ft_itoa_base_large(unsigned long nbr, int base, char maj)
+char		*ft_itoa_base_large(uintmax_t nbr, int base, char maj)
 {
 	int		nb;
 	char	*str;
@@ -59,5 +59,6 @@ char		*ft_itoa_base_large(unsigned long nbr, int base, char maj)
 	else
 		ft_recursive_maj(str, nbr, base, nb);
 	str[nb] = '\0';
+	//printf("vlaue [%s]\n",str );
 	return (str);
 }
