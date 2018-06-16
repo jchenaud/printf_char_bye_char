@@ -1,22 +1,90 @@
-# include "ft_printf.h"
+# include "includes/ft_printf.h"
+//# include "Core_function.c"
 # include <stdio.h>
+void f(void)
+{
+  return ;
+}
+
 int main(int c , char **v)
 {
-	////printf("//////////////////////////////////////////////////////////\n");
+  int i;
+  i = 42;
+  char *str;
+  void *p = f;
+
+  str = "efwefwfewfewfewfewefweffofkewfokfokwefokpwepofwefekwofkwoefpkowfwefw";
+  printf("%d",printf("origi : %p\n", &i));
+  printf("%d",ft_printf("minee : %p\n", &i));
+printf("\n");
+printf("\n");
+printf("\n");
+
+  printf("%d",printf("origi : %p\n", &str));
+  printf("%d",ft_printf("minee : %p\n", &str));
+
+  printf("\n");
+printf("\n");
+printf("\n");
+
+  printf("%d",printf("origi : %p\n", &p));
+  printf("%d",ft_printf("minee : %p\n", &p));
+
+  printf("\n");
+printf("\n");
+printf("\n");
+
+  printf("%d",printf("origi : %p\n", &ft_printf));
+  printf("%d",ft_printf("minee : %p\n", &ft_printf));
+  printf("\n");
+printf("\n");
+printf("\n");
+
+  printf("%d",printf("origi : %p\n", 0));
+  printf("%d",ft_printf("minee : %p\n", 0));
+
+  printf("\n");
+printf("\n");
+
+  printf("%d",printf("origi : %i\n", 42));
+  printf("%d",ft_printf("minee : %i\n", 42));
+
+
+
+  printf("\n");
+printf("\n");
+
+  printf("%d",printf("before %x after", 42));
+  printf("%d",ft_printf("before %x after", 42));
+
+   printf("\n");
+printf("\n");
+printf("%d",printf("before %05d after", 24));
+  printf("\n");
+  printf("%d",ft_printf("before %05d after", 24));
+  printf("\n");  printf("\n");
+  printf("%d",printf("before % 05D after", 24));
+  printf("\n");
+  printf("%d",ft_printf("before % 05D after", 24));
+  printf("\n");
+printf("%f",0);
+}
+	
+// //printf("//////////////////////////////////////////////////////////\n");
 // 	ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
 // 	ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
 // 	ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
 // 	//if (c == 2)
 // 	//	while(1)
-// 	getchar();
-	 // ft_printf("%s\n","abs");
-	 // getchar();
-	 // ft_printf("@moulitest: %s", NULL);
-	 // getchar();
-	 // ft_printf("%10s is a string", "this");
-	 // getchar();
-	 // ft_printf("%.2s is a string", "this");
-	 // getchar();
+// 	//getchar();
+// 	 ft_printf("%s\n","abs");
+// 	// getchar();
+// 	 ft_printf("@moulitest: %s", NULL);
+// 	// getchar();
+// 	 ft_printf("%10s is a string", "this");
+// 	// getchar();
+// 	 ft_printf("%.2s is a string", "this");
+// 	// getchar();
 
 
 
@@ -108,7 +176,7 @@ int main(int c , char **v)
 	
 // 	ft_printf("%5%");
 // 	//printf("//////////////////////////////////////////////////////////\n");
-// ft_printf("%#llx", 9223372036854775807);
+// ///ft_printf("%#llx", 9223372036854775807); segfaul!!!!!!
 // 	//printf("//////////////////////////////////////////////////////////\n");
 // 	ft_printf("%#x", 0);
 // 	//printf("//////////////////////////////////////////////////////////\n");
@@ -118,9 +186,9 @@ int main(int c , char **v)
 // 	printf("@moulitest: %#.x %#.0x\n", 0, 0);
 // 	//if (c == 2)
 	
-// all chekr test;
+// //all chekr test;
 
-//001 
+// //001 
 //   ft_printf("");
 //   getchar();
 
@@ -294,12 +362,12 @@ int main(int c , char **v)
 //   //   16) -->fffffffeffffffff<--
 
 // //031 (int)
-//   ft_printf("%llx", 9223372036854775807);
+// //  ft_printf("%llx", 9223372036854775807);
 //   //   16) -->7fffffffffffffffk<--
 //   //   16) -->7fffffffffffffff<--
 
 // //032 (int)
-//   ft_printf("%llx", 9223372036854775808);
+//  // ft_printf("%llx", 9223372036854775808);
 //   //   16) -->7fffffffffffffffk<--
 //   //   16) -->7fffffffffffffff<--
 
@@ -341,7 +409,7 @@ int main(int c , char **v)
 //   //    4) -->0x2a<--
 
 // //039 (int)
-//   ft_printf("%#llx", 9223372036854775807);
+// //  ft_printf("%#llx", 9223372036854775807);
 //   //   18) -->0x7fffffffffffffffk<--
 //   //   18) -->0x7fffffffffffffff<--
 
@@ -627,27 +695,27 @@ int main(int c , char **v)
 //   //   14) -->@moulitest:  ok<--
 //   //   13) -->@moulitest:  <--
 
-//094 (int)
+// //094 (int)
 //  // char *s;
- // //  s = ft_strdup("salut");
- //   ft_printf("%d %d\n", 1, -2);
- // // //  printf("%s\n",s);
- //   ft_printf("%d %d %d\n", 1, 2, 33);
+//  //  s = ft_strdup("salut");
+//    ft_printf("%d %d\n", 1, -2);
+//  // //  printf("%s\n",s);
+//    ft_printf("%d %d %d\n", 1, 2, 33);
 
-   ft_printf("%d %d %d\n", 1, -2, 33);
-   getchar();
+//    ft_printf("%d %d %d\n", 1, -2, 33);
+//   // getchar();
 
-  // printf("[@moulitest: %5.o %5.0o]\n", 0, 0);
-  // ft_printf("[@moulitest: %5.o %5.0o]\n", 0, 0);
-  // getchar();
-  // printf("[@moulitest: %5.o]\n",0);
-  // ft_printf("[@moulitest: %5.o]\n",0);
-  // getchar();
-  // printf("[@moulitest: %5.0o]\n",0);
-  // ft_printf("[@moulitest: %5.0o]\n",0);
-  // getchar();
-  // printf("[@moulitest: %5.o %5.0o %-5.o %-5.0o]\n", 0, 0, 0, 0);
-  // ft_printf("[@moulitest: %5.o %5.0o %-5.o %-5.0o]\n", 0, 0, 0, 0);
+//   printf("[@moulitest: %5.o %5.0o]\n", 0, 0);
+//   ft_printf("[@moulitest: %5.o %5.0o]\n", 0, 0);
+//   getchar();
+//   printf("[@moulitest: %5.o]\n",0);
+//   ft_printf("[@moulitest: %5.o]\n",0);
+//   getchar();
+//   printf("[@moulitest: %5.0o]\n",0);
+//   ft_printf("[@moulitest: %5.0o]\n",0);
+//   getchar();
+//   printf("[@moulitest: %5.o %5.0o %-5.o %-5.0o]\n", 0, 0, 0, 0);
+//   ft_printf("[@moulitest: %5.o %5.0o %-5.o %-5.0o]\n", 0, 0, 0, 0);
 
 
 
@@ -826,9 +894,9 @@ int main(int c , char **v)
 //   //    5) -->00042<--
 
 // //129 (int)
-  // ft_printf("%0+5d", 42);
-  //    3) -->+5dk<--
-  //    5) -->+0042<--
+//   ft_printf("%0+5d", 42);
+//      // 3) -->+5dk<--
+//      // 5) -->+0042<--
 
 // //130 (int)
 //   ft_printf("%5d", -42);
@@ -926,12 +994,12 @@ int main(int c , char **v)
 //   //   11) -->-2147483649<--
 
 // //149 (long long)
-//   ft_printf("%lld", 9223372036854775807);
+//   //ft_printf("%lld", 9223372036854775807);
 //   //    0) -->-1k<--
 //   //   19) -->9223372036854775807<--
 
 // //150 (long long)
-//   ft_printf("%lld", -9223372036854775808);
+// //  ft_printf("%lld", -9223372036854775808);
 //   //    0) -->0k<--
 //   //   20) -->-9223372036854775808<--
 
@@ -941,7 +1009,7 @@ int main(int c , char **v)
 //   //   19) -->9223372036854775807<--
 
 // //152 (intmax_t)
-//   ft_printf("%jd", -9223372036854775808);
+//  // ft_printf("%jd", -9223372036854775808);
 //   //    0) -->k<--
 //   //   20) -->-9223372036854775808<--
 
@@ -1040,13 +1108,13 @@ int main(int c , char **v)
 //   //    2) -->2dk<--
 //   //    3) --> 01<--
 
-// //172 (int)
-  ft_printf("%03.2d\n", -1);
-  printf("%03.2d\n", -1);
-  getchar();
-  ft_printf("%3.2d\n", -1);
-  printf("%3.2d\n", -1);
-  getchar();
+// // //172 (int)
+//   ft_printf("%03.2d\n", -1);
+//   printf("%03.2d\n", -1);
+//   getchar();
+//   ft_printf("%3.2d\n", -1);
+//   printf("%3.2d\n", -1);
+//   getchar();
 
 
 //   //    2) -->2dk<--
@@ -1171,13 +1239,11 @@ int main(int c , char **v)
 //   ft_printf("%U", 4294967296);
 //   //    0) -->k<--
 //   //   10) -->4294967296<--
-// getchar();
+// // getchar();
 // //197 (unsigned int)
 //   ft_printf("@moulitest: %.5u", 42);
-  //   17) -->@moulitest:      k<--
-  //   17) -->@moulitest: 00042<--
+//     // 17) -->@moulitest:      k<--
+//     // 17) -->@moulitest: 00042<--
 
-//--------------
-
-
-}
+// //--------------
+// }

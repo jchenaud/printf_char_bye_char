@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag_c.c                                           :+:      :+:    :+:   */
+/*   flag_p.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/27 12:48:34 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/15 10:36:40 by jchenaud         ###   ########.fr       */
+/*   Created: 2018/06/14 14:07:29 by jchenaud          #+#    #+#             */
+/*   Updated: 2018/06/15 09:09:40 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "ft_printf.h"
 
-void flag_c(t_env *e, va_list ap)
-{	char c;
+void flag_p(va_list ap , t_env *e)
+{
+	char c;
 
 	if (e->zero != 0)
 		c = '0';
 	else
-		c = ' ';
-	e->c = va_arg(ap,int);
-	while (e->int_value > 1)
+		c = 'f';
+	e->ito = ft_llitoa_base((long long unsigned int)(va_arg(ap,long  long unsigned int)),16, 0);//ft_itoa_base(va_arg(ap, int),16 , 0);
+	e->size = ft_strlen(e->ito);
+
+	if (ft_atoi(e->ito) != 0)
 	{
-		ft_putchar(c);
-		e->nc++;
-		e->int_value--;
+		write(1,"0x",2);
+		e->nc += 2;
+		int i = 0;
+		
+		write(1, e->ito, e->size);
+		e->nc += e->size;
+
 	}
-	ft_putchar(e->c);
-	while (e->int_value < -1)
+	else
 	{
-		ft_putchar(' ');
-		e->nc++;
-		e->int_value++;
+		write(1,"0x0",3);
+		e->nc += 3;
 	}
-	e->nc++;
 }

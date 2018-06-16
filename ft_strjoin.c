@@ -22,9 +22,15 @@ char	*ft_strjoin_free(char *s1, char *s2, int n)
 		dest[u_i + u_j] = s2[u_j];
 	dest[u_i + u_j] = '\0';
 	if(n == 1 || n == 3)
+	{
 		free(s1);
+		s1 = NULL;
+	}
 	if(n == 2 || n == 3)
+	{
 		free(s2);
+		s2 = NULL;
+	}
 	return (dest);
 }
 
@@ -46,10 +52,10 @@ char	*ft_strjoinc_free(char c, char *s, int n)
 	while (s[++u_j] != '\0')
 		dest[u_j + 1] = s[u_j];
 	dest[1 + u_j] = '\0';
-	if(n == 1)
-	{
-		free(s);
-		s = NULL;
-	}
+	// if(n == 1)
+	// {
+	// 	free(s);
+	// 	s = NULL;
+	// }
 	return (dest);
 }

@@ -66,17 +66,23 @@ char		*ft_neg_litoa_base(intmax_t nbr, int base, char maj)
 		nbr *= -1;
 	}
 	nb = ft_size(nbr, base);
+	//write(1,"coucou2\n",8);
 	
 	str = (char *)malloc(sizeof(*str) * nb + 1 +neg);
 	if (str == NULL)
 		return (NULL);
+
 	if (maj == 0)
 		ft_recursive_min(str, nbr, base, nb);
 	else
 		ft_recursive_maj(str, nbr, base, nb);
+
 	str[nb] = '\0';
+
 	if(neg == 1)
 		str = ft_strjoinc_free('-', str, 1);
+	//write(1,"coucou3\n",8);
+
 	//rintf("[%s]\n",str);
 	return (str);
 }

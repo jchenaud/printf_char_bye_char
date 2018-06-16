@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/02 23:34:43 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/11/14 11:53:15 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/15 13:45:16 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ int int_flag_find(const char *str,unsigned int i)
 	return (0);
 }
 
-int int_flag_find_without_zero(const char *str,unsigned int i)
+int int_flag_find_without_zero(const char *str,unsigned int i,t_env *e)
 {
 	char *int_flag;
 	int f;
@@ -163,7 +163,11 @@ int int_flag_find_without_zero(const char *str,unsigned int i)
 	while (str[i + 1] != int_flag[f] && int_flag[f])
 		f++;
 	if (str[i + 1] == int_flag[f] && int_flag[f])
+	{
+		// if (str[i+1] == '+')
+		// 	e->have_posi = 1;
 		return (1);
+	}
 	return (0);
 }
 

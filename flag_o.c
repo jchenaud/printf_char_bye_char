@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 14:37:20 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/11/14 12:06:12 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/15 09:29:05 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ void  flag_o(va_list ap, t_env *e)
 	place_zero = 0;
 
 	if (e->ito)
+	{
 		free(e->ito);
+		e->ito = NULL;
+	}
 	
 
 	if (e->have_sharp != 0)
@@ -56,10 +59,10 @@ void  flag_o(va_list ap, t_env *e)
 	else
 		size_sharp = 0;
 
-	if (e->have_l > 0)
+	//if (e->have_l > 0)
 		e->ito = ft_llitoa_base((long long unsigned int)(va_arg(ap,long  long unsigned int)),8, 0);
-	else if (e->have_l == 0)
-		e->ito = ft_itoa_base(va_arg(ap,int),8, 0);
+//	else if (e->have_l == 0)
+	//	e->ito = ft_itoa_base(va_arg(ap,int),8, 0);
 	e->size = ft_strlen(e->ito);
 
 	if (e->zero > 0 && ft_atoi(e->ito) != 0)

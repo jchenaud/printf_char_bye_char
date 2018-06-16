@@ -56,7 +56,7 @@ char		*ft_neg_litoa_base(intmax_t nbr, int base, char maj);
 
 char		*ft_llitoa_base(long long unsigned int nbr, int base, char maj);
 int 		x_flag(const char *str, va_list ap, t_env *e);
-void		int_flag(const char *str, t_env *e);
+void		int_flag(const char *str, t_env *e); 
 char 		next_flag(const char *str,int i);
 int			have_modi_flag(const char c);
 char		*ft_strjoinc_free(char c, char *s, int n);
@@ -69,11 +69,12 @@ void		flag_c(t_env *e, va_list ap);
 void		flag_o(va_list ap, t_env *e);
 void		flag_d(va_list ap, t_env *e);
 void 		flag_u(va_list ap, t_env *e , char u);
+void 		flag_p(va_list ap , t_env *e);
 
 
 
-int 		int_flag_find(const char *str,unsigned int i);
-int 		int_flag_find_without_zero(const char *str,unsigned int i);
+int 		int_flag_find(const char *str,unsigned int i); // retourn 1 si ya des monbre dans le flag
+int 		int_flag_find_without_zero(const char *str,unsigned int i,t_env *e);
 int			ft_int_flag_return_value(const char *str,unsigned int i,t_env *e);
 int			ft_inc_intflag(int nb);
 

@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 10:50:35 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/10/27 10:56:56 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/15 10:33:55 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 void flag_pc(t_env *e)
 {
+	char c;
+
+	if (e->zero != 0)
+		c = '0';
+	else
+		c = ' ';
 	while (e->int_value - 1 > 0)
 	{
-		ft_putchar(' ');
+		ft_putchar(c);
 		e->nc++;
 		e->int_value--;
 	}

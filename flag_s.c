@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 12:48:59 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/10/27 13:51:19 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/15 10:36:17 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ static void juste_write(t_env *e)
 
 void flag_s(t_env *e, va_list ap)
 {
+	char c;
+	if (e->zero != 0)
+		c = '0';
+	else
+		c = ' ';
+
 	e->string = va_arg(ap,char*);
 	if(!e->string)
 	{
@@ -42,7 +48,7 @@ void flag_s(t_env *e, va_list ap)
 	{
 		while (e->int_value - e->size > 0)
 		{
-			ft_putchar(' ');
+			ft_putchar(c);
 			e->nc++;
 			e->int_value--;
 		}

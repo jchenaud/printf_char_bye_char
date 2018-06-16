@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/01 07:14:40 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/11/17 08:10:51 by jchenaud         ###   ########.fr       */
+/*   Updated: 2017/11/20 16:27:37 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int x_flag(const char *str, va_list ap, t_env *e)
 	// int size;
 	// char *ito = NULL;
 	if (e->ito)
+	{ 
 		free(e->ito);
+		e->ito = NULL;
+	}
 
 	if (str[e->i + 1] == 'x' && (e->have_l > 0 || e->have_j > 0))
 		e->ito = ft_llitoa_base((long long unsigned int)(va_arg(ap,long  long unsigned int)),16, 0);
@@ -324,30 +327,14 @@ void int_flag(const char *str, t_env *e)
 		 	e->presition = nb;
 		 else
 		 	e->presition = 0;
-	// 	 {
-	// 	 	e->zero = 0;
-	// 	 	e->have_point = 0;
-	// 	 }
 	}
 	else 
-	{	//printf("yo\n");
+	{
 		if(e->have_neg)
 			nb *= -1;
 		e->int_value = nb;
-		//e->have_int;
 	}
-	//printf("int_value[%d]",e->int_value);
-	// printf("------i[%d]-c[%c]-nb[%d]__point[%d]value[%d]--------\n",e->i,str[e->i+1],nb,e->have_point,e->int_value);
-
-	//printf("c[%c]\n",str[e->i+1]);
 }
-
-	// nb = ft_int_flag_return_value(str,e->i,e);
-	// if (e->have_point == 1 && nb > 0)
-	// 	 e->presition = nb;
-	// else if (e->have_point == 0)
-	// 	e->int_value = nb;
-	// e->i += ft_inc_intflag(nb,e);
 
 
 
