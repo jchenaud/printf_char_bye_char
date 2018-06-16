@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/28 13:50:27 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/15 21:22:05 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/16 13:41:39 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,11 @@ if ( e->have_space != 0 && ft_atoi(e->ito) == 0)
 
 else if (difzero(e->ito,e->size) == 0) //|| (e->have_point != 0)difzero(e->ito,e->size) == 1)// || e->zero != 0)
 	{
+
+		if (e->have_posi != 0)
+		{
+			e->int_value--;
+		}
 		while(e->int_value > e->presition)
 		{
 			if(e->have_point == 0 && e->zero != 0)
@@ -131,6 +136,14 @@ else if (difzero(e->ito,e->size) == 0) //|| (e->have_point != 0)difzero(e->ito,e
 			e->int_value--;
 			e->nc++;
 			modi_size++;
+		}
+		if (e->have_posi != 0)
+		{
+			ft_putchar('+');
+			e->nc++;
+			//e->presition--;
+			modi_size++;
+			e->have_posi = 0;
 		}
 		while(e->presition > 0)
 		{
@@ -144,7 +157,7 @@ else if (difzero(e->ito,e->size) == 0) //|| (e->have_point != 0)difzero(e->ito,e
 
 	if (e->ito_neg == 0)
 	{
-		if (e->zero > 0 && ft_atoi(e->ito) != 0 && e->presition == 0)
+		if ((e->zero > 0) && ((ft_atoi(e->ito) != 0 && e->presition == 0) || (ft_atoi(e->ito) == 0)))
 			c = '0';
 		else 
 			c = ' ';
@@ -188,9 +201,12 @@ else if (difzero(e->ito,e->size) == 0) //|| (e->have_point != 0)difzero(e->ito,e
 		}
 		if(e->have_posi != 0 && ft_atoi(e->ito) >= 0 && c == ' ')
 		{
-			ft_putchar('+');
-			e->nc++;
-			modi_size++;
+			if ((ft_atoi(e->ito) != 0) || (ft_atoi(e->ito) == 0 && e->have_point == 0))
+			{
+				ft_putchar('+'); // BUG
+				e->nc++;
+				modi_size++;
+			}
 		}
 		if (mod_pres != 0)
 		{

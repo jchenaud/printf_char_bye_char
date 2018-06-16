@@ -67,7 +67,11 @@ printf("%d",printf("before %05d after", 24));
   printf("\n");
   printf("%d",ft_printf("before % 05D after", 24));
   printf("\n");
-printf("%f",0);
+
+  printf("\n");
+printf("%00+10.4d",0);
+printf("\n");
+ft_printf("%00+10.4d",0);
 }
 	
 // //printf("//////////////////////////////////////////////////////////\n");
