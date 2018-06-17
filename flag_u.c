@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:50:40 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/17 11:01:21 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/17 11:19:39 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,22 @@ void  flag_u(va_list ap, t_env *e , char u)
 	c = (e->zero != 0)? '0' : ' ';
 	if (e->presition > e->int_value || e->presition == 0)
 	{
+		int tmp = e->int_value;
 		while(e->int_value - e->size - e->presition > 0)
 		{
 			e->int_value--;
 			ft_putchar(c);
 			e->nc++;
 		}
+		e->int_value = tmp;
+		tmp = e->presition;
 		while(e->presition - e->size > 0)
 		{
 			e->presition--;
 			ft_putchar('0');
 			e->nc++;
 		}
+		e->presition = tmp;
 	}
 	else{
 		int tmp = e->int_value;
@@ -96,10 +100,14 @@ void  flag_u(va_list ap, t_env *e , char u)
 	}
 
 	juste_print(e);
-	while((e->int_value + e->size < 0) && (e->presition < e->int_value)) // && (e->have_neg != 0)) //|| e->have_neg != 0))
+	//printf("presition = %d e->int_value = %d\n",e->presition,e->int_value);
+	if (e->int_value < 0 && (e->int_value * -1) > e->presition)
 	{
-		e->int_value++;
-		ft_putchar('U');
-		e->nc++;
+		while(e->int_value + e->size < 0)// && (e->presition < e->int_value)) // && (e->have_neg != 0)) //|| e->have_neg != 0))
+		{
+			e->int_value++;
+			ft_putchar(' ');
+			e->nc++;
+		}
 	}
 }
