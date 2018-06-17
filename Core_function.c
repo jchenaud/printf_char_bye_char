@@ -35,6 +35,11 @@ int ft_protect(char *str, t_env *e)
 {
 	if (!str[e->i+1])
 		return (-1);
+	// if (e->have_neg == 1)
+	// {
+	//  	e->have_neg = 1;
+	//  	ft_printf("coucou");
+	// }
 
 	if (e->have_l != 0 && e->have_h != 0)
 	{
@@ -70,6 +75,8 @@ int ft_protect(char *str, t_env *e)
 		return(0);
 	}
 	
+
+
 	return (0);
 }
 
@@ -103,7 +110,9 @@ void ft_modif_flag(const char * str, t_env *e)
 		}
 		else if(str[e->i + 1] == '-')
 		{
-			if (int_flag_find_without_zero(str, e->i + 1, e) == 1)
+			while(str[e->i + 2] && str[e->i + 2] == '-')
+				e->i++;
+			if (str[e->i + 1] && int_flag_find_without_zero(str, e->i + 1, e) == 1)
 				return ;
 			e->have_neg++;
 

@@ -72,6 +72,38 @@ printf("%d",printf("before %05d after", 24));
 printf("%00+10.4d",0);
 printf("\n");
 ft_printf("%00+10.4d",0);
+
+ printf("\n");
+
+  printf("\n");
+printf("%.u",0);
+printf("\n");
+ft_printf("%.u",0);
+printf("\ntoto et %00009U%-2lu mimi et titi%--14d\n",0, (unsigned long)14, 200);
+ft_printf("\ntoto et %00009U%-2lu mimi et titi%--14d",0, (unsigned long)14, 200);
+
+  printf("\n");
+  printf("\n");
+printf("\ntoto et %00009U%-2lu mimi et titi%--14u",0, (unsigned long)14, 200);
+
+  printf("\n");
+ft_printf("\ntoto et %00009U%-2lu mimi et titi%--14u",0, (unsigned long)14, 200);
+
+ printf("\n");
+  printf("\n");
+ft_printf("%05.2u!\n", 0);
+printf("%05.2u!\n", 0);
+ printf("\n");
+  printf("\n");
+ft_printf("ko%-4.2hhu et %05.2u!", (unsigned char)-456, 0);
+  printf("\n");
+printf("ko%-4.2hhu et %05.2u!", (unsigned char)-456, 0);
+  printf("\n");
+ printf("%05.1u %3.4hu %-4.7U", 45, (unsigned short)-1789, 147);
+   printf("\n");
+ ft_printf("%05.1u %3.4hu %-4.7U", 45, (unsigned short)-1789, 147);
+   printf("\n");   printf("\n");   printf("\n");
+
 }
 	
 // //printf("//////////////////////////////////////////////////////////\n");

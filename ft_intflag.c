@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/02 23:34:43 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/15 13:45:16 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/17 09:43:26 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ int int_flag_find_without_zero(const char *str,unsigned int i,t_env *e)
 	int f;
 
 	f = 0;
-	int_flag = "123456789-";//.";
+	int_flag = "123456789";//-.";
 	while (str[i + 1] != int_flag[f] && int_flag[f])
 		f++;
 	if (str[i + 1] == int_flag[f] && int_flag[f])
