@@ -104,6 +104,113 @@ printf("ko%-4.2hhu et %05.2u!", (unsigned char)-456, 0);
  ft_printf("%05.1u %3.4hu %-4.7U", 45, (unsigned short)-1789, 147);
    printf("\n");   printf("\n");   printf("\n");
 
+printf("%03o\n",0 );
+ printf("\n");
+ft_printf("%03o\n",0 );
+ printf("\n");
+
+ printf("\n");
+
+ft_printf("@moulitest: %5.o %5.0o", 0, 0);
+ printf("\n"); printf("\n"); printf("\n");  
+printf("@moulitest: %5.o %5.0o", 0, 0);
+
+printf("\n"); printf("\n"); printf("\n"); 
+
+ft_printf("m%04.2o%#2oet", 0, 0);
+ printf("\n"); printf("\n"); printf("\n"); 
+printf("v%04.2o%#2oet", 0, 0);
+//////////////////////////////////////////////////////////
+ printf("\n"); printf("\n"); printf("\n"); 
+ft_printf("@moulitest:t%04.2oet", 1);
+ printf("\n"); printf("\n"); printf("\n"); 
+printf("@moulitest:t%04.2oet", 1);
+
+ printf("\n"); printf("\n"); printf("\n");
+ft_printf("coco et %-#-#--24O titi%#012o\n", 12, -874);
+printf("\ncoco et %-#-#--24O titi%#012o\n", 12, -874);
+
+ printf("\n"); printf("\n"); printf("\n");
+ft_printf("f%04.2o||%#2oet %#-8.3o titi\n" ,0,0,122 );
+ft_printf("f%04.2o||%#2oet %#-8.3o titi\n" ,0,0,0 );
+printf("p%04.2o||%#2oet %#-8.3o titi\n" ,0,0,0 );
+ printf("\n"); printf("\n"); printf("\n");
+
+ft_printf("@moulitest: %5.o|%5.0o|", 0, 0); // seulment si 0
+printf("\n");
+printf("@moulitest: %5.o|%5.0o|", 0, 0);
+printf("\n"); printf("\n"); printf("\n");
+ft_printf("|%#o|",0);
+printf("\n"); 
+printf("|%#o|",0);
+printf("\n"); printf("\n"); printf("\n");
+
+//printf("vrai %00O et %0o !", 0, 0, 0 );
+
+
+printf("\n"); 
+printf("vrai %###.0o%#.O et %#.1o !", 0, 0, 0 );
+printf("\n"); 
+ft_printf("faux %###.0o%#.O et %#.1o !", 0, 0, 0 );
+
+printf("\n"); printf("\n"); printf("\n");
+printf("vrai||%#1.2o||%0012.O",0, 123654789);
+printf("\n");
+ft_printf("faux||%#1.2o||%0012.O",0, 123654789);
+
+printf("\n"); printf("\n"); printf("\n");
+
+printf("vrai||test%#.4o et %02o %0#14.0o!!",012, 036, 12587499);
+printf("\n");
+
+ft_printf("faux||test%#.4o et %02o %0#14.0o!!",012, 036, 12587499);
+printf("\n"); printf("\n"); printf("\n");
+
+printf("vrai%#.9od\nee", 123456789);
+printf("\n");
+
+ft_printf("faux%#.9od\nee", 123456789);
+printf("\n");printf("\n");printf("\n");printf("\n");
+printf("vrai :%#X\n", 0xff7744);
+ft_printf("vrai :%#X\n", 0xff7744);
+printf("\n");printf("\n");printf("\n");printf("\n");
+printf("\n");printf("\n");printf("\n");printf("\n");
+
+ printf("vrai : %zx", 654230000000);
+ printf("\n");
+ ft_printf("faut : %zx", 654230000000);
+
+printf("\n");printf("\n");printf("\n");printf("\n");
+
+ printf("vrai : %.x", 12);
+ printf("\n");
+ ft_printf("faut : %.x", 12);
+
+ printf("\n");
+ printf("\n");
+ printf("\n");
+
+printf("vrai;%.10x", 0x1234abcd);
+ printf("\n");
+
+ft_printf("faux;%.10x", 0x1234abcd);
+
+ printf("\n");
+ printf("\n");
+ printf("\n");
+ printf("\n");
+
+printf("vrai%---10.6x et %01hhX !!\n", 0xaabb, (unsigned char) 0);
+ printf("\n");
+
+ft_printf("faux%---10.6x et %01hhX !!\n", 0xaabb, (unsigned char) 0);
+
+ printf("\n") ;printf("\n") ;printf("\n");
+
+printf("vrai ||%#.4X et %#0012x|| %#04hX !!", 0xaef, 0xe, (unsigned short)0);
+ printf("\n");
+ft_printf("faut ||%#.4X et %#0012x|| %#04hX !!", 0xaef, 0xe, (unsigned short)0);
+
 }
 	
 // //printf("//////////////////////////////////////////////////////////\n");
