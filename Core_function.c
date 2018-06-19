@@ -166,8 +166,14 @@ int ft_check_flag(const char *str, unsigned int init, va_list ap, t_env *e)
 	}
 	else if (str[e->i + 1] == 'c')
 	{
-		flag_c(e,ap);
+		//flag_c(e,ap);
+		 flag_uni_c(e,ap);
+		
 		return (0);
+	}
+	else if(str[e->i + 1] == 'C')
+	{
+		 flag_uni_c(e,ap);
 	}
 	else if (str[e->i + 1] == 'u' || str[e->i + 1] == 'U')
 	{

@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/01 07:14:40 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/18 16:58:25 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/19 12:47:22 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void juste_print(const char *str,t_env *e)
 {
-	if(e->have_sharp != 0 && ft_atoi(e->ito) != 0)
+	if(e->have_sharp != 0 && hexa_size(e->ito) > 0)
 	{
 		if (str[e->i + 1] == 'x')
 			write(1,"0x",2);
@@ -78,24 +78,28 @@ int x_flag(const char *str, va_list ap, t_env *e)
 	int sharp_size = 0;
 	char c;
 	int put_char = 0;
-	if (e->zero > 0)
+	if (e->zero > 0 && e->have_point == 0)
 		c = '0';
 	else 
 		c = ' ';
 
-	//printf("\nsharp = %d exa = %d ,zero = %d int_value = %d || ito = %s \n", e->have_sharp,exa_size,e->zero,e->int_value,e->ito );
 	if (e->have_sharp != 0 && exa_size != 0  && exa_size != -1)//ft_atoi(e->ito) != 0)
 	{
-		if((e->int_value == 0) || (e->zero != 0))
+	//printf("\nsharp = %d exa = %d ,zero = %d int_value = %d , size = %d || ito = %s \n", e->have_sharp,exa_size,e->zero,e->int_value,e->size,e->ito );
+		
+		if(((e->int_value <= e->size + 2)||(e->int_value > e->presition && e->have_point != 0) || (e->zero != 0)) && (e->zero == 0 || e->int_value == 0 || e->have_point == 0) )//(e->int_value == 0 || e->int_value <= e->presition + 2) || (e->zero != 0))
 		{
+
 			if (str[e->i + 1] == 'x')
 				write(1,"0x",2);
 			else
 				write(1,"0X",2);
 			e->nc += 2;
 			e->have_sharp = 0;
-			if (e->zero != 0)
+			if (e->zero != 0 || e->int_value <= e->presition + 2)
 				sharp_size = 2;
+			// if (e->int_value <= e->presition -2)
+			// 	e->presition += -2;
 
 		}
 		else
@@ -110,17 +114,48 @@ int x_flag(const char *str, va_list ap, t_env *e)
 				e->nc++;
 				e->int_value--;
 			}
+		if(exa_size == -1 && e->presition > 0)
+		{
+			ft_putchar('0');
+			e->nc++;
+		}
 		 	return(0);
 	}
 	if (e->have_point != 0)
 	{
+		
+		int tmp;
+		tmp =  e->presition;
+		while(e->int_value > e->presition && e->zero != 0 && e->presition >= e->size + sharp_size)
+		{
+			ft_putchar(' ');
+			e->nc++;
+			e->int_value--;
+			put_char++;
+
+		}
 		while(e->presition > e->size)
 			{
-				ft_putchar('0');
+				// if (e->presition < e->int_value && e->zero != 0)
+				// 	 ; //ft_putchar('S');
+				// else
+				// {
+				// 	ft_putchar('0'); //c ou o
+				
+				// e->nc++;
+				// put_char++;
+				// }
+				// e->presition--;
+				
+				// if (e->presition < e->int_value && e->zero != 0)
+					// ft_putchar('S');
+				// else
+					ft_putchar('0'); //c ou o
 				e->nc++;
 				e->presition--;
 				put_char++;
 			}
+			e->presition =  tmp;
 	}
 	if (e->int_value == 0)// && e->have_point == 0)
 		juste_print(str, e);
@@ -152,7 +187,14 @@ int x_flag(const char *str, va_list ap, t_env *e)
 		{
 			if(e->have_neg == 0)
 			{
-				while(e->int_value - e->size > 0)
+	//printf("\nsharp = %d exa = %d ,zero = %d int_value = %d , size = %d  presition %d|| ito = %s \n", e->have_sharp,exa_size,e->zero,e->int_value,e->size,e->presition,e->ito );
+
+				int sup;
+				if (e->presition > e->size)
+					sup = e->presition;
+				else
+					sup = e->size;
+				while(e->int_value - sharp_size  - sup > 0)
 				{
 					ft_putchar(c);
 					e->nc++;

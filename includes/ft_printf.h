@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <limits.h>
+#include <wchar.h>
 
 typedef struct  s_env
 {
@@ -84,6 +85,7 @@ int			ft_atoi(const char *str);
 size_t		ft_strlen(const char *s);
 size_t		ft_strlen(const char *s);
 void		ft_putchar(char c);
+void 		ft_uputchar(wchar_t c);
 //static 	int absol(int nb)
 
 

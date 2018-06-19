@@ -211,6 +211,74 @@ printf("vrai ||%#.4X et %#0012x|| %#04hX !!", 0xaef, 0xe, (unsigned short)0);
  printf("\n");
 ft_printf("faut ||%#.4X et %#0012x|| %#04hX !!", 0xaef, 0xe, (unsigned short)0);
 
+ printf("\n");
+ printf("\n");
+ printf("\n");
+
+printf("vrai %#7.5X||%0006.2x et %lX!", 0xab, 0x876, 0xff11ff11ff1);
+ printf("\n");
+ft_printf("faux %#7.5X||%0006.2x et %lX!", 0xab, 0x876, 0xff11ff11ff1);
+
+printf("\n");
+ printf("\n");
+ printf("\n");
+printf("vrai|%#.22zX et %020.14jx\n", 0xff1144ff1144, 0xffaabbccee);
+ printf("\n");
+
+ft_printf("faux|%#.22zX et %020.14jx\n", 0xff1144ff1144, 0xffaabbccee);
+
+ printf("\n");
+ printf("\n");
+ printf("\n");
+
+printf(" vrai ! %#9llX et %-12hhx", (unsigned long long)-1248759650, (unsigned char)-1478223695);
+ printf("\n");
+
+ft_printf(" faux ! %#9llX et %-12hhx", (unsigned long long)-1248759650, (unsigned char)-1478223695);
+ printf("\n");
+ printf("\n");
+ printf("\n");
+
+printf("vrai %##.0xet %#.X||%###.1x", 0, 0, 0);
+ printf("\n");
+
+ft_printf("faux %##.0xet %#.X||%###.1x", 0, 0, 0);
+
+ printf("\n");
+ printf("\n");
+
+ printf("\n");
+
+ft_printf("faux : %0#10.0x||%0#x", 12345, 0);
+ printf("\n");
+printf("vrai : %0#10.0x||%0#x", 12345, 0);
+
+
+ printf("\n");
+ printf("\n");
+
+//unsigned int cha = (unsigned int) L'ò';
+ //wchar_t w =  0x6f;
+ //ft_uputchar(w);//(unsigned int) L'ò');
+ printf("\n");
+
+
+printf("vrai : %C", 0x6f);
+ printf("\n");
+
+ft_printf("faux : %C", 0x6f);
+ printf("\n");
+
+printf("fuck you  ;%C",256 );
+ft_printf("fuck you  ;%C",256 );
+
+
+
+//ft_uputchar((unsigned int) L'𐀀');
+
+
+//print_wchar(L'𐀀');
+
 }
 	
 // //printf("//////////////////////////////////////////////////////////\n");
