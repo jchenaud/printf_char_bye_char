@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <limits.h>
 #include <wchar.h>
+#include <stdlib.h>
 
 typedef struct  s_env
 {
@@ -78,6 +79,7 @@ int 		int_flag_find(const char *str,unsigned int i); // retourn 1 si ya des monb
 int 		int_flag_find_without_zero(const char *str,unsigned int i,t_env *e);
 int			ft_int_flag_return_value(const char *str,unsigned int i,t_env *e);
 int			ft_inc_intflag(int nb);
+int 		flag_uni_c(t_env *e, va_list ap, char flag);
 
 
 

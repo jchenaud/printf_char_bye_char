@@ -1,6 +1,7 @@
 # include "includes/ft_printf.h"
 //# include "Core_function.c"
 # include <stdio.h>
+ #include <locale.h> 
 void f(void)
 {
   return ;
@@ -269,15 +270,59 @@ printf("vrai : %C", 0x6f);
 ft_printf("faux : %C", 0x6f);
  printf("\n");
 
-printf("fuck you  ;%C",256 );
-ft_printf("fuck you  ;%C",256 );
+//printf("fuck you  ;%C",256 );
+//ft_printf("fuck you  ;%C",256 );
 
+//mbrlen(mbs, MB_CUR_MAX, &ss);    
 
+printf("{%C}\n",0x11ffff);
+ft_printf("{%C}\n",0x11ffff);
+ printf("\n");
+ printf("\n");
+//MB_CUR_MAX = 2;
+
+//char *
+//mblen( pmb, MB_CUR_MAX );
+setlocale(LC_ALL, "");
+
+ //printf("%lc", 254);
+ printf("\n");
+
+ft_printf("%lC", 254);
 
 //ft_uputchar((unsigned int) L'𐀀');
 
+//printf("%s %C %d %p %x %% %S", "bonjour ", L'Ë©≤', 42, &free, 42, L"ŸM-^Dÿ≠ŸM-^E ÿÆŸM-^Fÿ...");
+ printf("\n");
 
+
+ printf("vrai %c", -21);
+  printf("\n");
+ ft_printf("faux %c", -21);
+  printf("\n");
+
+
+printf("vrai| ca%----4c |%1c|va |%10c|%-c| ??", '\0', '\n', (char)564, 0);
+  printf("\n");
+ft_printf("faux| ca%----4c |%1c|va |%10c|%-c| ??", '\0', '\n', (char)564, 0);
+  printf("\n");
+
+ft_printf("%c lo %c",'A', 'b');
+
+//ft_printf("%s %C %d %p %x %% %S", "bonjour ", L'Ë©≤', 42, &free, 42, L"ŸM-^Dÿ≠ŸM-^E ÿÆŸM-^Fÿ...");
+
+//ft_printf("MINE>\t[]\n", 25, 16215);
 //print_wchar(L'𐀀');
+  printf("\n");
+
+
+ft_printf("faux : %C", (wint_t)-2);
+  printf("\n");
+
+printf("vrai : %C", (wint_t)-2);
+  printf("\n");
+
+printf("value %d \n",(wint_t)-2 );
 
 }
 	

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_test.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaubin <aaubin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 10:10:21 by aaubin            #+#    #+#             */
-/*   Updated: 2013/12/16 10:10:34 by aaubin           ###   ########.fr       */
+/*   Updated: 2018/06/20 11:07:47 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -568,19 +568,19 @@ printf("segfault////////////////////////////////////");
 
 	printf("\033[1;37m==== %%p + double attr ===\033[0m\n");
 
-	mr = ft_printf("MINE>\t[%-20+p]\n", &or);
-	or = printf(   "ORIG>\t[%-20+p]\n", &or);
-	ft_print_result(mr, or, __LINE__);
+	// mr = ft_printf("MINE>\t[%-20+p]\n", &or);
+	// or = printf(   "ORIG>\t[%-20+p]\n", &or);
+	// ft_print_result(mr, or, __LINE__);
 
-	mr = ft_printf("MINE>\t[%-20+lp]\n", &or);
-	or = printf(   "ORIG>\t[%-20+lp]\n", &or);
-	ft_print_result(mr, or, __LINE__);
+	// mr = ft_printf("MINE>\t[%-20+lp]\n", &or);
+	// or = printf(   "ORIG>\t[%-20+lp]\n", &or);
+	// ft_print_result(mr, or, __LINE__);
 
-	mr = ft_printf("MINE>\t[%-20+-p]\n", &or);
-	or = printf(   "ORIG>\t[%-20+-p]\n", &or);
-	ft_print_result(mr, or, __LINE__);
+	// mr = ft_printf("MINE>\t[%-20+-p]\n", &or);
+	// or = printf(   "ORIG>\t[%-20+-p]\n", &or);
+	// ft_print_result(mr, or, __LINE__);
 
-	printf("\033[1;37m======== end %%p ====\033[0m\n\n");
+	 printf("\033[1;37m======== end %%p ====\033[0m\n\n");
 
 
 	// printf("\033[1;37m==== Width parameter ===\033[0m\n");

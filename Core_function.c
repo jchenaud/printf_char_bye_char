@@ -31,7 +31,7 @@ void ft_init(t_env *e)
 		e->ito = NULL;
 	}
 }
-int ft_protect(char *str, t_env *e)
+int ft_protect(const char *str, t_env *e)
 {
 	if (!str[e->i+1])
 		return (-1);
@@ -164,16 +164,27 @@ int ft_check_flag(const char *str, unsigned int init, va_list ap, t_env *e)
 		flag_s(e, ap);
 		return (0);
 	}
-	else if (str[e->i + 1] == 'c')
+	else if (str[e->i + 1] == 'S')
 	{
-		//flag_c(e,ap);
-		 flag_uni_c(e,ap);
-		
+		//flag_s(e, ap);
 		return (0);
 	}
-	else if(str[e->i + 1] == 'C')
+	// else if (str[e->i + 1] == 'c')
+	// {
+	// 	//flag_c(e,ap);
+	// 	// flag_uni_c(e,ap);
+		
+	// 	return (0);
+	// }
+	else if(str[e->i + 1] == 'C' ||  str[e->i + 1] == 'c')
 	{
-		 flag_uni_c(e,ap);
+		if( flag_uni_c(e,ap,str[e->i+1]) == -1)
+		{
+		//	printf("fuck");
+			return (-1);
+		}
+		//printf("OK\n");
+		return (0);
 	}
 	else if (str[e->i + 1] == 'u' || str[e->i + 1] == 'U')
 	{

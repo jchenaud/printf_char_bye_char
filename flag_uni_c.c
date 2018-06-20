@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 12:53:56 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/19 16:04:09 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/20 15:25:19 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,42 +69,60 @@
 
 int		print_wchar(wchar_t c)
 {
+	 //if (c < 0)
+		//return (0);
 	if (c <= 0x7F)
 	{
-		ft_putchar(c);
-		return (1);
+		if (MB_CUR_MAX >= 1)
+		{
+			ft_putchar(c);
+			return (1);
+		}
 	}
-	if (c <= 0x7FF)
+	else if (c <= 0x7FF)
 	{
-		ft_putchar((c >> 6) + 0xC0);
-		ft_putchar((c & 0x3F) + 0x80);
-		return (2);
+		if (MB_CUR_MAX >= 2)
+		{
+			ft_putchar((c >> 6) + 0xC0);
+			ft_putchar((c & 0x3F) + 0x80);
+			return (2);
+		}
 	}
-	if (c <= 0xFFFF)
+	else if (c <= 0xFFFF)
 	{
-		ft_putchar((c >> 12) + 0xE0);
-		ft_putchar(((c >> 6) & 0x3F) + 0x80);
-		ft_putchar((c & 0x3F) + 0x80);
-		return (3);
+		if (MB_CUR_MAX >= 3)
+		{
+			ft_putchar((c >> 12) + 0xE0);
+			ft_putchar(((c >> 6) & 0x3F) + 0x80);
+			ft_putchar((c & 0x3F) + 0x80);
+			return (3);
+		}
 	}
-	// else if(0xFFFFFFFF)
-	// {
-		ft_putchar((c >> 18) + 0xF0);
-		ft_putchar(((c >> 12) & 0x3F) + 0x80);
-		ft_putchar(((c >> 6) & 0x3F) + 0x80);
-		ft_putchar((c & 0x3F) + 0x80);
-		return (4);
+	else if(c <= 0x10FFFF)
+	{
+		if (MB_CUR_MAX >= 4)
+		{
+			ft_putchar((c >> 18) + 0xF0);
+			ft_putchar(((c >> 12) & 0x3F) + 0x80);
+			ft_putchar(((c >> 6) & 0x3F) + 0x80);
+			ft_putchar((c & 0x3F) + 0x80);
+			return (4);
+		}
+		return (0);
+	}
+	return (-1);
 
 	//}
 }
 
 
-void flag_uni_c(t_env *e, va_list ap)
+int flag_uni_c(t_env *e, va_list ap,char flag)
 {	
 
 	//print_unicode(ap,)
 	
 
+		// printf("debut\n");
 
 	char c;
 	wchar_t wc;
@@ -114,10 +132,17 @@ void flag_uni_c(t_env *e, va_list ap)
 		c = '0';
 	else
 		c = ' ';
-	wc = va_arg(ap,wchar_t);
-	if (wc == 256 || wc == 0XBFFE)
+	// if (flag == 'C' || e->have_l != 0)
+		wc = va_arg(ap,wchar_t);
+	// else
+	// 	wc = (unsigned char)va_arg(ap,int);
+
+
+	if( (wc > 0xD7FF && wc < 0xE000) || (wc > 0x2FFFF && wc < 0xE0000) || (wc > 0x10FFFF) )//if (wc == 256 || wc == 0XBFFE)
 	{
-		return ; // doit metre fin et retourner -1
+		//printf("chity value\n");
+		e->nc = -1;
+		return (-1); // doit metre fin et retourner -1
 	}
 
 	while (e->int_value > 1)
@@ -126,7 +151,29 @@ void flag_uni_c(t_env *e, va_list ap)
 		e->nc++;
 		e->int_value--;
 	}
-	int add = print_wchar(wc);
+	int add = 0;
+	if (flag == 'C' || e->have_l != 0)
+	{
+		if (wc < 0)
+		{
+			e->nc = -1;
+			return (-1);
+		}
+		add = print_wchar(wc);
+		//printf("value  : %d\n", wc);
+	}
+	else
+	{
+		ft_putchar(wc);
+		add++;
+	}
+
+	if (add ==  -1)
+	{
+		//printf("yolo\n");
+		e->nc = -1;
+		return (-1);
+	}
 	while (e->int_value < -1)
 	{
 		ft_putchar(' ');
@@ -134,4 +181,6 @@ void flag_uni_c(t_env *e, va_list ap)
 		e->int_value++;
 	}
 	e->nc += add;
+	// printf("fin \n");
+	return (0);
 }
