@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/28 13:50:27 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/16 13:41:39 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/20 23:05:30 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,27 +66,46 @@ void  flag_d(va_list ap, t_env *e)
 		free(e->ito);
 		e->ito = NULL;
 	}
-	if (e->have_l == 0 && e->have_h == 0 && e->have_j == 0 && e->have_z == 0)
-	{
-	//write(1,"coucou1\n",8);
-		
-		//e->ito =ft_neg_litoa_base((( long int )va_arg(ap,  long int)),10, 0);
-		
-		e->ito = ft_neg_litoa_base(((int)va_arg(ap,int)),10, 0);
+ long long int value;
 
-	}
+	value =  va_arg(ap,   long long int);
+
+	if (e->have_l == 0 && e->have_h == 0 && e->have_j == 0 && e->have_z == 0)
+		e->ito = ft_neg_litoa_base((int)value,10,0);
 	else if (e->have_l == 0 && e->have_h == 1 && e->have_j == 0 && e->have_z == 0)
-		e->ito = ft_neg_litoa_base(((short int)va_arg(ap, int)),10, 0);
+		e->ito = ft_neg_litoa_base((short int)value,10, 0);
 	else if (e->have_l == 0 && e->have_h == 2 && e->have_j == 0 && e->have_z == 0)
-		e->ito = ft_neg_litoa_base(((signed char)va_arg(ap, int)),10, 0);
+		e->ito = ft_neg_litoa_base((signed char)value ,10, 0);
 	// else if (e->have_l == 1 && e->have_h == 0 && e->have_j == 0 && e->have_z == 0)
 	// 	e->ito = ft_neg_litoa_base(((long int)va_arg(ap, long int)),10, 0);
 	else if (e->have_l != 0  && e->have_h == 0 && e->have_j == 0 && e->have_z == 0)
-		e->ito = ft_neg_litoa_base(((long long int )va_arg(ap, long long int)),10, 0);
+		e->ito = ft_neg_litoa_base((long long int )value ,10, 0);
 	else if (e->have_l == 0 && e->have_h == 0 && e->have_j == 1 && e->have_z == 0)
-		e->ito = ft_neg_litoa_base(((uintmax_t)va_arg(ap, uintmax_t)),10, 0);
+		e->ito = ft_neg_litoa_base((uintmax_t) value, 10, 0);
 	else if (e->have_l == 0 && e->have_h == 0 && e->have_j == 0 && e->have_z == 1)
-		e->ito = ft_neg_litoa_base(((ssize_t)va_arg(ap, ssize_t)),10, 0);
+		e->ito = ft_neg_litoa_base((ssize_t)value ,10, 0);
+
+	// if (e->have_l == 0 && e->have_h == 0 && e->have_j == 0 && e->have_z == 0)
+	// {
+	// //write(1,"coucou1\n",8);
+		
+	// 	//e->ito =ft_neg_litoa_base((( long int )va_arg(ap,  long int)),10, 0);
+		
+	// 	e->ito = ft_neg_litoa_base(((int)va_arg(ap,int)),10, 0);
+
+	// }
+	// else if (e->have_l == 0 && e->have_h == 1 && e->have_j == 0 && e->have_z == 0)
+	// 	e->ito = ft_neg_litoa_base(((short int)va_arg(ap, int)),10, 0);
+	// else if (e->have_l == 0 && e->have_h == 2 && e->have_j == 0 && e->have_z == 0)
+	// 	e->ito = ft_neg_litoa_base(((signed char)va_arg(ap, int)),10, 0);
+	// // else if (e->have_l == 1 && e->have_h == 0 && e->have_j == 0 && e->have_z == 0)
+	// // 	e->ito = ft_neg_litoa_base(((long int)va_arg(ap, long int)),10, 0);
+	// else if (e->have_l != 0  && e->have_h == 0 && e->have_j == 0 && e->have_z == 0)
+	// 	e->ito = ft_neg_litoa_base(((long long int )va_arg(ap, long long int)),10, 0);
+	// else if (e->have_l == 0 && e->have_h == 0 && e->have_j == 1 && e->have_z == 0)
+	// 	e->ito = ft_neg_litoa_base(((uintmax_t)va_arg(ap, uintmax_t)),10, 0);
+	// else if (e->have_l == 0 && e->have_h == 0 && e->have_j == 0 && e->have_z == 1)
+	// 	e->ito = ft_neg_litoa_base(((ssize_t)va_arg(ap, ssize_t)),10, 0);
 
 
 

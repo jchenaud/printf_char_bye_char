@@ -88,6 +88,8 @@ size_t		ft_strlen(const char *s);
 size_t		ft_strlen(const char *s);
 void		ft_putchar(char c);
 void 		ft_uputchar(wchar_t c);
+
+int 		hexa_size(const char *str);
 //static 	int absol(int nb)
 
 

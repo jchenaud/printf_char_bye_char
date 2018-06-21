@@ -324,23 +324,100 @@ printf("vrai : %C", (wint_t)-2);
 
 printf("value %d \n",(wint_t)-2 );
 
-}
-	
-// //printf("//////////////////////////////////////////////////////////\n");
+  printf("\n");
+  printf("\n");
+  printf("\n");
+  printf("\n");
+  printf("\n");
+
+printf("v value = %d\n",printf("|%-8C|\n", 35));
+  printf("\n");
+
+printf("f value = %d\n",ft_printf("|%-8C|\n", 35));
+ft_printf("%ld", (long)INT_MAX + 1);
+  printf("\n");
+
+ft_printf("%li", LONG_MIN);
+  printf("\n");
+ft_printf("%lu, %lu", 0, ULONG_MAX);
+  printf("\n");
+ft_printf("%lo, %lo", 0, ULONG_MAX);
+  printf("\n");
+ft_printf("%lx, %lx", 0, ULONG_MAX);
+  printf("\n");
+ft_printf("%lX, %lX", 0, ULONG_MAX);
+  printf("\n");
+
+ft_printf("%lc, %lc", L'暖', L'ح');
+  printf("\n");
+ft_printf("%ls, %ls", L"暖炉", L"لحم خنزير");
+  printf("\n");
+
+  ft_printf("%lO, %lO", 0, USHRT_MAX);
+  printf("\n");
+  ft_printf("%lU, %lU", 0, USHRT_MAX);
+  printf("\n");
+
+  ft_printf("%lD, %lD", 0, USHRT_MAX);
+  printf("f value = %d\n",ft_printf("%5c", 10));
+ft_printf("f value = %d\n" ,printf("%5c", 10));
+
+
+ 
+ ft_printf("\n1\n");
+ft_printf("%jx", 4294967296);
+
+ ft_printf("\n2\n");
+
+
+  ft_printf("%jx", -4294967296);
+
+
+ ft_printf("\n3\n");
+//030 (int)
+  ft_printf("%jx", -4294967297);
+  
+ ft_printf("\n4\n");
+
+ ft_printf("%llx", 9223372036854775807);
+ 
+
+ ft_printf("\n5\n");
+
+ ft_printf("%llx", 9223372036854775808);
+
+ft_printf("%010x", 542); // seg 
+
+
+  ft_printf("%-15x", 542);
+
+
+//035 (int)
+  ft_printf("%2x", 542);
+
+
+//036 (int)
+  ft_printf("%.2x", 5427);
+
+//-fsanitize=address
+
+
+	}
+// printf("//////////////////////////////////////////////////////////\n");
 // 	ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
 // 	ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
 // 	ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
 // 	//if (c == 2)
 // 	//	while(1)
-// 	//getchar();
+// 	////getchar() ;
 // 	 ft_printf("%s\n","abs");
-// 	// getchar();
+// 	// //getchar() ;
 // 	 ft_printf("@moulitest: %s", NULL);
-// 	// getchar();
+// 	// //getchar() ;
 // 	 ft_printf("%10s is a string", "this");
-// 	// getchar();
+// 	// //getchar() ;
 // 	 ft_printf("%.2s is a string", "this");
-// 	// getchar();
+// 	// //getchar() ;
 
 
 
@@ -436,7 +513,7 @@ printf("value %d \n",(wint_t)-2 );
 // 	//printf("//////////////////////////////////////////////////////////\n");
 // 	ft_printf("%#x", 0);
 // 	//printf("//////////////////////////////////////////////////////////\n");
-// 	getchar();
+// 	//getchar() ;
 // 	printf("@moulitest: %#.x %#.0x\n", 0, 0);
 // 	printf("@moulitest: %#.x %#.0x\n", 0, 0);
 // 	printf("@moulitest: %#.x %#.0x\n", 0, 0);
@@ -446,159 +523,163 @@ printf("value %d \n",(wint_t)-2 );
 
 // //001 
 //   ft_printf("");
-//   getchar();
+//   //getchar() ;
 
 //   //    0) -->k<--
 //   //    0) --><--
 
 // //002 
 //   ft_printf("\n");
-//   getchar();
+//   //getchar() ;
 
 //   //    1) -->$\nk<--
 //   //    1) -->$\n<--
 
 // // //003 
 //   ft_printf("test");
-// //   getchar();
+// //   //getchar() ;
 
 // //   //    4) -->testk<--
 // //   //    4) -->test<--
 
 // // //004 
 //   ft_printf("test\n");
-// //   getchar();
+// //   //getchar() ;
 
 // //   //    5) -->test$\nk<--
 // //   //    5) -->test$\n<--
 
 // // //005 
-//   ft_printf("1234");
-// //   getchar();
+//  // ft_printf("1234");
+// //   //getchar() ;
 
 // //   //    4) -->1234k<--
 // //   //    4) -->1234<--
 
 // // //006 
-//   ft_printf("%%");
-// //   getchar();
+//  // ft_printf("%%");
+// //   //getchar() ;
 
 // //   //    1) -->%k<--
 // //   //    1) -->%<--
 
 // // //007 
-//   ft_printf("%5%");
-// //   getchar();
+//  // ft_printf("%5%");
+// //   //getchar() ;
 
 // //   //    5) -->    %k<--
 // //   //    5) -->    %<--
 
 // // //008 
 //   ft_printf("%-5%");
-// //   getchar();
+// //   //getchar() ;
 
 // //   //    5) -->%    k<--
 // //   //    5) -->%    <--
 
 // // //009 
 //   ft_printf("%.0%");
-// //   getchar();
+// //   //getchar() ;
 
 //   //    1) -->%k<--
 //   //    1) -->%<--
 
 // //010 (char *)
 //   ft_printf("%%", "test");
-//  // getchar();
+//  // //getchar() ;
 
 //   //    1) -->%k<--
 //   //    1) -->%<--
 
 // //011 (char *)
 //   ft_printf("%   %", "test");
-//   // getchar();
+//   // //getchar() ;
 //   //    1) -->%k<--
 //   //    1) -->%<--
 
 // //012 (int)
-//   getchar();
-//   ft_printf("%x wdwdwd %x", 42,42);
-//   getchar();
-//   //    2) -->2ak<--
-//   //    2) -->2a<--
+//  // //getchar() ;
+//   printf("salut \nn\n");
+//   //ft_printf("%x wdwdwd %x", 42,42);
+//   /////////////////////////////////////////////////////////////////////////////
+// //   //getchar() ;
+// //   //    2) -->2ak<--
+// //   //    2) -->2a<--
 
-// //013 (int)
-//   ft_printf("%X", 42);
-//   //    2) -->2Ak<--
-//   //    2) -->2A<--
+// // //013 (int)
+//   //ft_printf("%X", 42);
+// //   //    2) -->2Ak<--
+// //   //    2) -->2A<--
 
-// //014 (int)
-//   ft_printf("%x", 0);
-//   //    1) -->0k<--
-//   //    1) -->0<--
+// // //014 (int)
+//   // ft_printf("%x", 0);
+// //   //    1) -->0k<--
+// //   //    1) -->0<--
 
-// //015 (int)
-//   ft_printf("%X", 0);
-//   //    1) -->0k<--
-//   //    1) -->0<--
+// // //015 (int)
+//   // ft_printf("%X", 0);
+// //   //    1) -->0k<--
+// //   //    1) -->0<--
 
-// //016 (int)
-//   ft_printf("%x", -42);
-//   //    8) -->ffffffd6k<--
-//   //    8) -->ffffffd6<--
+// // //016 (int)
+//    ft_printf("%x", -42);
+// //   //    8) -->ffffffd6k<--
+// //   //    8) -->ffffffd6<--
+// //   printf("salut \nn\n");
 
-// //017 (int)
-//   ft_printf("%X", -42);
-//   //    8) -->FFFFFFD6k<--
-//   //    8) -->FFFFFFD6<--
+// // //017 (int)
+//    ft_printf("%X", -42);
+// //   //    8) -->FFFFFFD6k<--
+// //   //    8) -->FFFFFFD6<--
 
-// //018 (int)
-//   ft_printf("%x", 4294967296);
-//   //    1) -->0k<--
-//   //    1) -->0<--
+// // //018 (int)
+//    ft_printf("%x", 4294967296);
+// //   //    1) -->0k<--
+// //   //    1) -->0<--
 
-// //019 (int)
-//   ft_printf("%X", 4294967296);
-//   //    1) -->0k<--
-//   //    1) -->0<--
+// // //019 (int)
+//    ft_printf("%X", 4294967296);
+// //   //    1) -->0k<--
+// //   printf("salut \nn\n");
+// //   //    1) -->0<--
 
-// //020 (int)
-// //  ft_printf("%x", test);
-//   //    1) -->0k<--
-//   //    1) -->0<--
+// // //020 (int)
+//  ft_printf("%x", 500);
+// //   //    1) -->0k<--
+// //   //    1) -->0<--
 
-// //021 (int)
-//   ft_printf("%10x", 42);
-//   //   10) -->        2ak<--
-//   //   10) -->        2a<--
+// // //021 (int)
+//    ft_printf("%10x", 42);
+// //   //   10) -->        2ak<--
+// //   //   10) -->        2a<--
 
-// //022 (int)
-//   ft_printf("%-10x", 42);
-//   //   10) -->2a        k<--
-//   //   10) -->2a        <--
+// // //022 (int)
+//    ft_printf("%-10x", 42);
+// //   //   10) -->2a        k<--
+// //   //   10) -->2a        <--
 
-// //023 (int)
-//   ft_printf("%lx", 4294967296);
-//   //    9) -->100000000k<--
-//   //    9) -->100000000<--
+// // //023 (int)
+//    ft_printf("%lx", 4294967296);
+// //   //    9) -->100000000k<--
+// //   //    9) -->100000000<--
 
-// //024 (int)
-//   ft_printf("%llX", 4294967296);
-//   //    9) -->100000000k<--
-//   //    9) -->100000000<--
+// // //024 (int)
+//    ft_printf("%llX", 4294967296);
+// //   //    9) -->100000000k<--
+// //   //    9) -->100000000<--
 
-// //025 (int)
-//   ft_printf("%hx", 4294967296);
-//   //    1) -->0k<--
-//   //    1) -->0<--
+// // //025 (int)
+//    ft_printf("%hx", 4294967296);
+// //   //    1) -->0k<--
+// //   //    1) -->0<--
 
-// //026 (int)
-//   ft_printf("%hhX", 4294967296);
-//   //    1) -->0k<--
-//   //    1) -->0<--
+// // //026 (int)
+//    ft_printf("%hhX", 4294967296);
+// //   //    1) -->0k<--
+// //   //    1) -->0<--
 
-// //027 (int)
-//   ft_printf("%jx", 4294967295);
+// // //027 (int)
+//   //ft_printf("%jx", 4294967295);
 //   //    8) -->ffffffffk<--
 //   //    8) -->ffffffff<--
 
@@ -616,9 +697,10 @@ printf("value %d \n",(wint_t)-2 );
 //   ft_printf("%jx", -4294967297);
 //   //   16) -->fffffffeffffffffk<--
 //   //   16) -->fffffffeffffffff<--
+//   ft_printf("plopy \nn\n");
 
-// //031 (int)
-// //  ft_printf("%llx", 9223372036854775807);
+// // //031 (int)
+//  //ft_printf("%llx", 9223372036854775807);
 //   //   16) -->7fffffffffffffffk<--
 //   //   16) -->7fffffffffffffff<--
 
@@ -628,9 +710,10 @@ printf("value %d \n",(wint_t)-2 );
 //   //   16) -->7fffffffffffffff<--
 
 // //033 (int)
-//   ft_printf("%010x", 542);
+// // ft_printf("%010x", 542); // seg 
 //   //   10) -->000000021ek<--
 //   //   10) -->000000021e<--
+//   printf("sawqdqd \nn\n");
 
 // //034 (int)
 //   ft_printf("%-15x", 542);
@@ -650,11 +733,11 @@ printf("value %d \n",(wint_t)-2 );
 // //037 (int)
 //    printf("%5.x\n", 5427);
 //    printf("%5.10x\n", 5427);
-//   //getchar();
+//   ////getchar() ;
 
 
 //    ft_printf("%5.2x", 5427);
-//   //getchar();
+//   ////getchar() ;
    
 //   //    5) --> 1533k<--
 //   //    5) --> 1533<--
@@ -665,7 +748,7 @@ printf("value %d \n",(wint_t)-2 );
 //   //    4) -->0x2a<--
 
 // //039 (int)
-// //  ft_printf("%#llx", 9223372036854775807);
+//   ft_printf("%#llx", 9223372036854775807);
 //   //   18) -->0x7fffffffffffffffk<--
 //   //   18) -->0x7fffffffffffffff<--
 
@@ -696,32 +779,32 @@ printf("value %d \n",(wint_t)-2 );
 
 // //045 (int)
 //   ft_printf("%#-08x", 42);
-//   //    8) -->0x2a    k<--
-//   //    8) -->0x2a    <--
+//      //8) -->0x2a    k<--
+//      //8) -->0x2a    <--
 
 // ////046 (int)
 //   ft_printf("@moulitest: %#.x %#.0x", 0);
 //   //  // 13) -->@moulitest:  0x00k<--
 //   //  // 13) -->@moulitest:  <--
-//  // getchar();
+//  // //getchar() ;
 
 // ////047 (int)
 //   ft_printf("@moulitest: %.x %.0x", 0, 0);
 //   //   13) -->@moulitest:  0k<--
 //   //   13) -->@moulitest:  <--
-//  // getchar();
+//  // //getchar() ;
 
 // //048 (int)
 //   ft_printf("@moulitest: %5.x %5.0x", 0, 0);
 //   //   23) -->@moulitest:     0     0k<--
 //   //   23) -->@moulitest:            <--
-//  //getchar();
+//  ////getchar() ;
 
 // //049 (char *)
 //   ft_printf("%s", "abc");
 //   //    3) -->abck<--
 //   //    3) -->abc<--
-//  // getchar();
+//  // //getchar() ;
 
 // //050 (char *)
 //   ft_printf("%s", "this is a string");
@@ -762,54 +845,44 @@ printf("value %d \n",(wint_t)-2 );
 //   ft_printf("%.2s is a string", "this");
 //   //   14) -->th is a stringk<--
 //   //   14) -->th is a string<--
-// getchar();
 // //058 (char *)
 //   ft_printf("%5.2s is a string", "this");
 //   //   14) -->2s is a stringk<--
 //   //   17) -->   th is a string<--
-//  getchar();
 
 // //059 (char *)
 //   ft_printf("%10s is a string", "");
 //   //   22) -->           is a stringk<--
 //   //   22) -->           is a string<--
-//  getchar();
 
 // //060 (char *)
 //   ft_printf("%.2s is a string", "");
 //   //   14) -->^@T is a stringk<--
 //   //   12) --> is a string<--
-//  getchar();
 
 // //061 (char *)
 //   ft_printf("%5.2s is a string", "");
 //   //   14) -->2s is a stringk<--
 //   //   17) -->      is a string<--
-//  getchar();
 
 // //062 (char *)
 //   ft_printf("%-10s is a string", "this");
 //   //   22) -->       is a stringk<--
 //   //   22) -->this       is a string<--
-//  getchar();
 
 // //063 (char *)
 //   ft_printf("%-.2s is a string", "this");
 //   //   15) -->.2s is a stringk<--
 //   //   14) -->th is a string<--
 
-//  getchar();
 // //064 (char *)
 //   ft_printf("%-5.2s is a string", "this");
 //   //   14) -->2s is a stringk<--
 //   //   17) -->th    is a string<--
-//  getchar();
-
 // //065 (char *)
 //   ft_printf("%-10s is a string", "");
 //   //   22) -->           is a stringk<--
 //   //   22) -->           is a string<--
-//  getchar();
 
 // //066 (char *)
 //   ft_printf("%-.2s is a string", "");
@@ -959,17 +1032,17 @@ printf("value %d \n",(wint_t)-2 );
 //    ft_printf("%d %d %d\n", 1, 2, 33);
 
 //    ft_printf("%d %d %d\n", 1, -2, 33);
-//   // getchar();
+//   // //getchar() ;
 
 //   printf("[@moulitest: %5.o %5.0o]\n", 0, 0);
 //   ft_printf("[@moulitest: %5.o %5.0o]\n", 0, 0);
-//   getchar();
+//   //getchar() ;
 //   printf("[@moulitest: %5.o]\n",0);
 //   ft_printf("[@moulitest: %5.o]\n",0);
-//   getchar();
+//   //getchar() ;
 //   printf("[@moulitest: %5.0o]\n",0);
 //   ft_printf("[@moulitest: %5.0o]\n",0);
-//   getchar();
+//   //getchar() ;
 //   printf("[@moulitest: %5.o %5.0o %-5.o %-5.0o]\n", 0, 0, 0, 0);
 //   ft_printf("[@moulitest: %5.o %5.0o %-5.o %-5.0o]\n", 0, 0, 0, 0);
 
@@ -1367,10 +1440,10 @@ printf("value %d \n",(wint_t)-2 );
 // // //172 (int)
 //   ft_printf("%03.2d\n", -1);
 //   printf("%03.2d\n", -1);
-//   getchar();
+//   //getchar() ;
 //   ft_printf("%3.2d\n", -1);
 //   printf("%3.2d\n", -1);
-//   getchar();
+//   //getchar() ;
 
 
 //   //    2) -->2dk<--
@@ -1495,11 +1568,11 @@ printf("value %d \n",(wint_t)-2 );
 //   ft_printf("%U", 4294967296);
 //   //    0) -->k<--
 //   //   10) -->4294967296<--
-// // getchar();
+// // //getchar() ;
 // //197 (unsigned int)
 //   ft_printf("@moulitest: %.5u", 42);
 //     // 17) -->@moulitest:      k<--
-//     // 17) -->@moulitest: 00042<--
+//    // 17) -->@moulitest: 00042<--
 
 // //--------------
 // }

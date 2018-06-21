@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 15:48:58 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/11/18 14:48:00 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/21 14:47:08 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ static void	ft_recursive_min(char *str, uintmax_t nbr, int base, int i)
 
 	t = "0123456789abcdef";
 	if (i > 0)
-		ft_recursive_min(str, nbr / base, base, i - 1);
-	str[i - 1] = t[nbr % base];
+	{
+		ft_recursive_min(str, nbr / base, base, i - 1);	
+		str[i - 1] = t[nbr % base];
+	}
 }
 
 static void	ft_recursive_maj(char *str, uintmax_t nbr, int base, int i)
@@ -41,8 +43,10 @@ static void	ft_recursive_maj(char *str, uintmax_t nbr, int base, int i)
 
 	t = "0123456789ABCDEF";
 	if (i > 0)
+	{
 		ft_recursive_maj(str, nbr / base, base, i - 1);
-	str[i - 1] = t[nbr % base];
+		str[i - 1] = t[nbr % base];
+	}
 }
 
 char		*ft_itoa_base_large(uintmax_t nbr, int base, char maj)

@@ -145,6 +145,8 @@ int ft_check_flag(const char *str, unsigned int init, va_list ap, t_env *e)
 	else if(str[e->i + 1] == 'x' || str[e->i + 1] == 'X')
 	{
 		x_flag(str, ap, e);
+		//printf("\nfinish\n");
+
 		return (0);
 	}
 	else if (str[e->i + 1] == 'o' || str[e->i + 1] == 'O' )
@@ -156,6 +158,9 @@ int ft_check_flag(const char *str, unsigned int init, va_list ap, t_env *e)
 	{
 		if ( str[e->i + 1] == 'D')
 			e->have_l = 2;
+		else if ( str[e->i + 1] == 'l')
+			e->have_l = 0;
+
 		flag_d(ap ,e);
 		return (0);
 	}
@@ -216,12 +221,21 @@ int ft_check_flag(const char *str, unsigned int init, va_list ap, t_env *e)
 int ft_end(t_env *e)
 {
 	int nb_char;
+	//printf("clopt\n");
 
 	nb_char = e->nc;
 	if (e->ito)
 	{
-		//ft_printf("");
+	//	ft_putstr("e->ito : ");
+		//printf("%p\n", e->ito);
+		//printf("\nadresse de e == %p\n",e );
+		//printf("\n e string e = %p\n",e->string);
+		
+
+		// ft_putstr(ft_itoa_base(e->ito, 16, 1));
 		free(e->ito);
+		//ft_putstr("\nbye\n");
+
 		e->ito = NULL;
 	}
 	return (nb_char);
@@ -229,7 +243,7 @@ int ft_end(t_env *e)
 
 int	ft_printf(const char *str, ...)
 {
-	static t_env e;
+	t_env e; // static 
 	va_list ap;
 
 	e.ito = NULL;
@@ -260,11 +274,18 @@ int	ft_printf(const char *str, ...)
 				}
 			}
 			else
+			{
+				va_end(ap);
 				return (e.nc);
+			}
 			e.i = e.i + 2;
 		}
 	}
+//printf("\n ap addres = %p\n",ap);
+//printf("adresse STR[%p]\n",str);
+	//printf("chalut\n");
 	va_end(ap);
+	//printf("chalut\n");
 	return (ft_end(&e));
 	//printf("\n");
 }

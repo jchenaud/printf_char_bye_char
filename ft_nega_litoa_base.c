@@ -32,8 +32,10 @@ static void	ft_recursive_min(char *str, intmax_t nbr, int base, int i)
 
 	t = "0123456789abcdef";
 	if (i > 0)
+	{
 		ft_recursive_min(str, nbr / base, base, i - 1);
-	str[i - 1] = t[nbr % base];
+		str[i - 1] = t[nbr % base];
+	}
 }
 
 static void	ft_recursive_maj(char *str, intmax_t nbr, int base, int i)
@@ -42,8 +44,10 @@ static void	ft_recursive_maj(char *str, intmax_t nbr, int base, int i)
 
 	t = "0123456789ABCDEF";
 	if (i > 0)
+	{
 		ft_recursive_maj(str, nbr / base, base, i - 1);
-	str[i - 1] = t[nbr % base];
+		str[i - 1] = t[nbr % base];
+	}
 }
 
 char		*ft_neg_litoa_base(intmax_t nbr, int base, char maj)
@@ -68,7 +72,7 @@ char		*ft_neg_litoa_base(intmax_t nbr, int base, char maj)
 	nb = ft_size(nbr, base);
 	//write(1,"coucou2\n",8);
 	
-	str = (char *)malloc(sizeof(*str) * nb + 1 +neg);
+	str = (char *)malloc(sizeof(char) * (nb + 1 +neg));
 	if (str == NULL)
 		return (NULL);
 

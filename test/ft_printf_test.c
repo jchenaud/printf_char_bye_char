@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 10:10:21 by aaubin            #+#    #+#             */
-/*   Updated: 2018/06/20 11:07:47 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/21 14:19:01 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	ft_print_result(int mr, int or, int line)
 int	main(void)
 {
 	int	or, mr;
-	char	**test;
+	//char	**test;
 
-	test = malloc(sizeof(char*));
+	//test = malloc(sizeof(char*));
 	or = 0;
 	mr = 0;
 	printf("\033[1;37m======== %%d ========\033[0m\n");

@@ -16,7 +16,7 @@ BRICK = Core_function.o x_flag.o ft_strlen.o ft_putnbr.o ft_putstr.o ft_putchar.
 all: $(NAME)
 $(NAME):
 	# cd $(LIBFT_PATH) && make re
-	@gcc -c -Wall  -Wextra  $(SRC) -I $(INCLUDES)
+	@gcc -c -Wall  -Wextra   $(SRC) -I $(INCLUDES)
 	@ar rc $(NAME) $(BRICK)
 	@ranlib $(NAME)
 

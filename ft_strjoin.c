@@ -57,5 +57,7 @@ char	*ft_strjoinc_free(char c, char *s, int n)
 	// 	free(s);
 	// 	s = NULL;
 	// }
+//printf("\n DEST adress = %p\n",dest);
+
 	return (dest);
 }
