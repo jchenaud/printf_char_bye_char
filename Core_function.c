@@ -208,14 +208,24 @@ int ft_check_flag(const char *str, unsigned int init, va_list ap, t_env *e)
 		return (0);
 	}else
 	{
+		char c;
+		c = ' ';
+		if (e->zero)
+			c = '0';
 		while(e->int_value - 1 > 0)
 		{
-			ft_putchar(' ');
+			ft_putchar(c);
 			e->int_value--;
 			e->nc++;
 		}
 		ft_putchar(str[e->i + 1]);
 		e->nc++;
+		while(e->int_value  + 1 < 0)
+		{
+			ft_putchar(' ');
+			e->int_value++;
+			e->nc++;
+		}
 	}
 	return(0);
 

@@ -485,6 +485,9 @@ ft_printf("faux:{%10R}\n");
 printf("vrai {%30S}\n", L"我是一只猫。");
 ft_printf("faux {%30S}\n", L"我是一只猫。");
 
+printf("vrai{%-30S}\n", L"我是一只猫。");
+ft_printf("faux{%-30S}\n", L"我是一只猫。");
+
 
 
 }

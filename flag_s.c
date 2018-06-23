@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 12:48:59 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/23 16:33:01 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/23 23:32:49 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void flag_s_min(t_env *e ,va_list ap , char flag, char c)
 }
 
 
-void flag_s_maj(t_env *e ,va_list ap , char flag)
+void flag_s_maj(t_env *e ,va_list ap , char flag, char c)
 {
   e->string_wc = va_arg(ap,wchar_t *);
 	
@@ -125,19 +125,33 @@ void flag_s_maj(t_env *e ,va_list ap , char flag)
 			}
 		}
 		else{
-			while(i < e->size)
-			{ 
-				k = size_wchar(e->string_wc[i]);
-				char_can_print_size += k; 
+			if(e->int_value > 0)
+			{
+				while(i < e->size)
+				{ 
+					k = size_wchar(e->string_wc[i]);
+					char_can_print_size += k;  // maybe abter breack
 
-				  if(e->int_value - char_can_print_size < 0)
+				  	if(e->int_value - char_can_print_size < 0)
 					  	break ;
-				i++;
+					i++;
+				}
+			}
+			else{
+				while(i < e->size)
+				{ 
+					k = size_wchar(e->string_wc[i]);
+					char_can_print_size += k; // maybe abter breack
+
+				  	if(e->int_value + char_can_print_size > 0)
+					  	break ;
+					i++;
+				}
 			}
 		}
 			while (e->int_value  - char_can_print_size >  0)
 			{
-				ft_putchar(' ');
+				ft_putchar(c);
 				e->nc++;
 				e->int_value--;
 			}
@@ -145,7 +159,8 @@ void flag_s_maj(t_env *e ,va_list ap , char flag)
 			e->size = tmp_s;
 		
 		juste_write(e,flag);
-		while (e->int_value + e->size < 0)
+		//printf("char can print size  = %d\n", char_can_print_size);
+		while (e->int_value + char_can_print_size < 0)
 		{
 			ft_putchar(' ');
 			e->nc++;
@@ -158,17 +173,18 @@ void flag_s_maj(t_env *e ,va_list ap , char flag)
 void flag_s(t_env *e, va_list ap, char flag)
 {
 	char c;
-	if (e->zero != 0)
+	if (e->zero != 0)// && ((e->have_point != 0 && e->presition != 0 )|| e->have_point == 0))
 		c = '0';
 	else
 		c = ' ';
+
 	if(flag == 's' && e->have_l != 0)
 		flag = 'S';
 
 	if(flag == 's')
 		flag_s_min(e ,ap ,flag,c);
 	else
-		flag_s_maj(e ,ap ,flag);
+		flag_s_maj(e ,ap ,flag,c);
 	
 
 }
