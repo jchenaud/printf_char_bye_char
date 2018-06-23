@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchenaud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 17:56:38 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/02/22 10:15:49 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/22 10:24:50 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "ft_printf.h"
 
 int				ft_tolower(int c);
 int				ft_toupper(int c);

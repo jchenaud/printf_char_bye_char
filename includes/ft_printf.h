@@ -39,6 +39,8 @@ typedef struct  s_env
 
 
 	char *string;
+	wchar_t *string_wc;
+
 	char c;
 	int k; // just int value of %d
 	//int comme_arg;
@@ -66,9 +68,9 @@ char		*ft_strjoinc_free(char c, char *s, int n);
 char		*ft_strdup(const char *);
 
 void		flag_pc(t_env *e);
-void		flag_s(t_env *e, va_list ap);
+void		flag_s(t_env *e, va_list ap, char flag);
 void		flag_c(t_env *e, va_list ap);
-void		flag_o(va_list ap, t_env *e);
+void		flag_o(va_list ap, t_env *e,char flag);
 void		flag_d(va_list ap, t_env *e);
 void 		flag_u(va_list ap, t_env *e , char u);
 void 		flag_p(va_list ap , t_env *e);

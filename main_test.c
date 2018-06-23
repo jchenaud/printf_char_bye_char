@@ -285,7 +285,7 @@ ft_printf("{%C}\n",0x11ffff);
 //mblen( pmb, MB_CUR_MAX );
 setlocale(LC_ALL, "");
 
- //printf("%lc", 254);
+ printf("%lc", 254);
  printf("\n");
 
 ft_printf("%lC", 254);
@@ -401,8 +401,94 @@ ft_printf("%010x", 542); // seg
 
 //-fsanitize=address
 
+  printf("\n");
+printf("vrai | %S", L"Á±≥");
+  printf("\n");
+ft_printf("faux | %S", L"Á±≥");
+  printf("\n");
 
-	}
+printf("vrai : %ls, %ls", L"ÊM-^ZM-^VÁM-^BM-^I", L"ŸM-^Dÿ≠ŸM-^E ÿÆŸM-^Fÿ≤ŸM-ÿ±");
+  printf("\n");
+
+ft_printf("faux : %ls, %ls", L"ÊM-^ZM-^VÁM-^BM-^I", L"ŸM-^Dÿ≠ŸM-^E ÿÆŸM-^Fÿ≤ŸM-ÿ±");
+
+  printf("\n");
+
+printf("vrai %-8C|\n", 1350);
+ft_printf("faux %-8C|\n", 1350);
+
+printf("vrai |%lc|\n", 0x40501);
+ft_printf("faux |%lc|\n", 0x40501);
+
+  printf("\n");
+char cha;
+printf("%d", printf("vrai : [%s][%d][%p][%%][%S][%D][%i]{%o}[%O][%u][%U][%x][%X][%c][%C]|","bonjour", 42, &cha, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플'));
+  printf("\n");
+
+printf("%d", ft_printf("faux : [%s][%d][%p][%%][%S][%D][%i]{%o}[%O][%u][%U][%x][%X][%c][%C]|","bonjour", 42, &cha, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플'));
+  printf("\n");
+  printf("\n");
+	
+ft_printf("\n%o\n",42);
+printf("\n%o\n",42);
+printf("\n");
+printf("vrai : %llU, %llU\n", 0, USHRT_MAX);
+ft_printf("faux : %llU, %llU\n", 0, USHRT_MAX);
+printf("%hD, %hD\n", 0, USHRT_MAX);
+ft_printf("%hD, %hD\n", 0, USHRT_MAX);
+printf("%hhX, %hhX\n", 0, UCHAR_MAX + 42);
+ft_printf("%hhX, %hhX\n", 0, UCHAR_MAX + 42);
+ft_printf("[%03.2d", 0);
+printf("\n");
+
+printf("%04d|", 0);
+printf("\n");
+ft_printf("%04d|", 0);
+
+printf("\n");
+
+printf("%00+10.4d|\n", 0);
+ft_printf("%00+10.4d|\n", 0);
+
+printf("%15.4d|\n", -42);
+ft_printf("%15.4d|\n", -42);
+
+printf("vrai %15.4x|\n", 42);
+ft_printf("faux %15.4x|\n", 42);
+
+
+printf("vrai : %#.22zX et %020.14jx\n", 0xff1144ff1144, 0xffaabbccee );
+ft_printf("faux : %#.22zX et %020.14jx\n", 0xff1144ff1144, 0xffaabbccee );
+
+
+printf("vrai %#7.5X%0006.2x et %lX!\n", 0xab, 0x876, 0xff11ff11ff1);
+ft_printf("faux %#7.5X%0006.2x et %lX!\n", 0xab, 0x876, 0xff11ff11ff1);
+
+
+printf("vrai %---10.6x et %01hhX !!\n", 0xaabb, (unsigned char)0);
+ft_printf("faux %---10.6x et %01hhX !!\n", 0xaabb, (unsigned char)0);
+
+printf("vrai : %4.15x\n", 42);
+ft_printf("faux : %4.15x\n", 42);
+
+ printf("\n");
+
+ printf("vrai %lc", 254);
+ printf("\n");
+
+ft_printf("faux %lC", 254);
+ printf("\n");
+
+printf("vrai:{%10R}\n");
+ft_printf("faux:{%10R}\n");
+
+printf("vrai {%30S}\n", L"我是一只猫。");
+ft_printf("faux {%30S}\n", L"我是一只猫。");
+
+
+
+}
+
 // printf("//////////////////////////////////////////////////////////\n");
 // 	ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
 // 	ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);

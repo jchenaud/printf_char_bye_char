@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 12:53:56 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/20 15:25:19 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/23 14:59:25 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,32 @@
 // 	// }
 // }
 
+
+int 	size_wchar(wchar_t c)
+{
+	if (c <= 0x7F)
+	{
+		if (MB_CUR_MAX >= 1)
+			return (1);
+	}
+	else if (c <= 0x7FF)
+	{
+		if (MB_CUR_MAX >= 2)
+			return (2);
+	}
+	else if (c <= 0xFFFF)
+	{
+		if (MB_CUR_MAX >= 3)
+			return (3);
+	}
+	else if(c <= 0x10FFFF)
+	{
+		if (MB_CUR_MAX >= 4)
+			return (4);
+	}
+	return(0);
+	
+}
 
 int		print_wchar(wchar_t c)
 {
@@ -144,8 +170,13 @@ int flag_uni_c(t_env *e, va_list ap,char flag)
 		e->nc = -1;
 		return (-1); // doit metre fin et retourner -1
 	}
+	// int size_modif = 0;
+	// if (flag == 'C' || e->have_l != 0)
+	// 	size_modif = size_wchar(wc);
+	// if(size_modif < 0)
+	// 	size_modif = 0;
 
-	while (e->int_value > 1)
+	while (e->int_value > 1)//size_modif)
 	{
 		ft_putchar(c);
 		e->nc++;
@@ -159,7 +190,12 @@ int flag_uni_c(t_env *e, va_list ap,char flag)
 			e->nc = -1;
 			return (-1);
 		}
-		add = print_wchar(wc);
+		// if (e->have_point != 0)
+		// {
+
+		// }
+		// else
+			add = print_wchar(wc);
 		//printf("value  : %d\n", wc);
 	}
 	else
@@ -174,7 +210,7 @@ int flag_uni_c(t_env *e, va_list ap,char flag)
 		e->nc = -1;
 		return (-1);
 	}
-	while (e->int_value < -1)
+	while (e->int_value  + (add -1) < -1)
 	{
 		ft_putchar(' ');
 		e->nc++;

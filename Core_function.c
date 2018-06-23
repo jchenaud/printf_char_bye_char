@@ -151,7 +151,7 @@ int ft_check_flag(const char *str, unsigned int init, va_list ap, t_env *e)
 	}
 	else if (str[e->i + 1] == 'o' || str[e->i + 1] == 'O' )
 	{
-		flag_o(ap ,e);
+		flag_o(ap ,e,str[e->i + 1]);
 		return (0);
 	}
 	else if (str[e->i + 1] == 'd' || str[e->i + 1] == 'i' || str[e->i + 1] == 'D')
@@ -166,12 +166,12 @@ int ft_check_flag(const char *str, unsigned int init, va_list ap, t_env *e)
 	}
 	else if (str[e->i + 1] == 's')
 	{
-		flag_s(e, ap);
+		flag_s(e, ap, 's');
 		return (0);
 	}
 	else if (str[e->i + 1] == 'S')
 	{
-		//flag_s(e, ap);
+		flag_s(e, ap, 'S');
 		return (0);
 	}
 	// else if (str[e->i + 1] == 'c')
@@ -208,6 +208,12 @@ int ft_check_flag(const char *str, unsigned int init, va_list ap, t_env *e)
 		return (0);
 	}else
 	{
+		while(e->int_value - 1 > 0)
+		{
+			ft_putchar(' ');
+			e->int_value--;
+			e->nc++;
+		}
 		ft_putchar(str[e->i + 1]);
 		e->nc++;
 	}

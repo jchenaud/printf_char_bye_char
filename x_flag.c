@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/01 07:14:40 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/21 14:07:57 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/23 14:42:42 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int x_flag(const char *str, va_list ap, t_env *e)
 		e->ito = NULL;
 	}
 
-  
+  //printf("have ng = %d \n",e->have_neg);
   // printf("yolo \n");
  if (str[e->i + 1] == 'x')
  {
@@ -68,96 +68,34 @@ int x_flag(const char *str, va_list ap, t_env *e)
  		e->ito =  ft_llitoa_base((uintmax_t)(va_arg(ap,uintmax_t)),16,0);
  	else if (e->have_z != 0)
  		e->ito = ft_llitoa_base((ssize_t)(va_arg(ap,ssize_t)),16,0);
-
+ 	else if (e->have_h == 1)
+ 		e->ito = ft_llitoa_base((unsigned short int)(va_arg(ap,int)),16,0);
+ 	else if (e->have_h > 1)
+ 		e->ito = ft_llitoa_base((unsigned char)(va_arg(ap,int)),16,0);
  	else
  		e->ito =  ft_llitoa_base((unsigned int)(va_arg(ap,unsigned int)),16,0);
-
- 	// if(e->have_l >= 2)
- 	// 	e->ito =  ft_neg_litoa_base((long long int)value,16,0);
- 	// else if(e->have_l == 1)
- 	// 	e->ito =  ft_neg_litoa_base((unsigned long int)value,16,0);
- 	// else if (e->have_j != 0)
- 	// 	e->ito =  ft_neg_litoa_base((uintmax_t)value,16,0);
- 	// else
- 	// 	e->ito =  ft_neg_litoa_base(value,16,0);
-
- 	// if (e->have_l == 0 && e->have_j == 0  && e->have_z == 0)
- 		 // e->ito = ft_neg_litoa_base((int)value,16, 0);
-	// else if (e->have_l != 0  && e->have_h == 0 && e->have_j == 0 )
-		// e->ito = ft_neg_litoa_base((unsigned long long int )value ,10, 0);
-	// else if (e->have_l == 0 && e->have_h == 0 && e->have_j == 1 )
-		// e->ito = ft_neg_litoa_base((uintmax_t) value, 10, 0);
-	// else if (e->have_l == 0 && e->have_h == 0 && e->have_j == 0 )
-		// e->ito = ft_neg_litoa_base((ssize_t)value ,10, 0);
  }
  else{
 
- 	if(e->have_l >= 2)
+ 		if(e->have_l >= 2)
  		e->ito =  ft_llitoa_base((unsigned long long int)(va_arg(ap,unsigned long long int)),16,1);
  	else if(e->have_l == 1)
  		e->ito =  ft_llitoa_base((unsigned long int)(va_arg(ap,unsigned long int)),16,1);
  	else if (e->have_j != 0)
  		e->ito =  ft_llitoa_base((uintmax_t)(va_arg(ap,uintmax_t)),16,1);
  	else if (e->have_z != 0)
- 		e->ito =  ft_llitoa_base((ssize_t)(va_arg(ap,ssize_t)),16,1);
-
+ 		e->ito = ft_llitoa_base((ssize_t)(va_arg(ap,ssize_t)),16,1);
+ 	else if (e->have_h == 1)
+ 		e->ito = ft_llitoa_base((unsigned short int)(va_arg(ap,int)),16,1);
+ 	else if (e->have_h > 1)
+ 		e->ito = ft_llitoa_base((unsigned char)(va_arg(ap,int)),16,1);
  	else
  		e->ito =  ft_llitoa_base((unsigned int)(va_arg(ap,unsigned int)),16,1);
-
- 	// long long int value;
-	// value =  (va_arg(ap,long long int));
- // 	if(e->have_l != 0)
- // 		e->ito =  ft_neg_litoa_base((long long int)value,16,1);
- // 	else if(e->have_l == 1)
- // 		e->ito =  ft_neg_litoa_base((unsigned long int)value,16,1);
- // 	else if (e->have_j != 0)
- // 		e->ito =  ft_neg_litoa_base((uintmax_t)value,16,1); 		
- // 	else
- // 	e->ito =  ft_neg_litoa_base(value,16,1);
-
- // 	if (e->have_l == 0 && e->have_j == 0  && e->have_z == 0)
- // 		 e->ito = ft_neg_litoa_base((int)value,16, 1);
-	// else if (e->have_l != 0  && e->have_h == 0 && e->have_j == 0 )
-	// 	e->ito = ft_neg_litoa_base((long long int )value ,10, 0);
-	// else if (e->have_l == 0 && e->have_h == 0 && e->have_j == 1)
-	// 	e->ito = ft_neg_litoa_base((uintmax_t) value, 10, 0);
-	// else if (e->have_l == 0 && e->have_h == 0 && e->have_j == 0 )
-	// 	e->ito = ft_neg_litoa_base((ssize_t)value ,10, 0);
  }
-  // printf("yolo 2\n");
- 
- 	//else if (e->have_l == 0 && e->have_h == 1 && e->have_j == 0 && e->have_z == 0)
-	// 	e->ito = ft_neg_litoa_base((short int)value,10, 0);
-	// else if (e->have_l == 0 && e->have_h == 2 && e->have_j == 0 && e->have_z == 0)
-	// 	e->ito = ft_neg_litoa_base((signed char)value ,10, 0);
-	// else if (e->have_l == 1 && e->have_h == 0 && e->have_j == 0 && e->have_z == 0)
-	// 	e->ito = ft_neg_litoa_base(((long int)va_arg(ap, long int)),10, 0);
 	e->size = ft_strlen(e->ito);
 
 	int exa_size = hexa_size(e->ito);
 
-
-   //printf("yolo 3\n");
-
-
-
-	// if (str[e->i + 1] == 'x' && (e->have_l > 0 || e->have_j > 0))
-	// 	e->ito = ft_llitoa_base((long long unsigned int)(va_arg(ap,long  long unsigned int)),16, 0);
-	// else if (e->have_l > 0 || e->have_j > 0)
-	// 	e->ito = ft_llitoa_base((long long unsigned int)(va_arg(ap,long long unsigned int)),16, 1);
-
-	// else if (str[e->i + 1] == 'x' && e->have_z != 0)
-	// 	e->ito = ft_llitoa_base((ssize_t)(va_arg(ap,ssize_t)),16, 0);
-	// else if (e->have_z != 0)
-	// 	e->ito = ft_llitoa_base((ssize_t)(va_arg(ap,ssize_t)),16, 1);
-
-	// else if (str[e->i + 1] == 'x' && e->have_l == 0)
-	// 	e->ito = ft_itoa_base((long long int)(va_arg(ap,long long int)),16, 0);
-	// else //if (e->have_l == 0)
-	// 	e->ito = ft_itoa_base((long long int)(va_arg(ap,long long int)),16, 1);
-	// e->size = ft_strlen(e->ito);
-
-	// int exa_size = hexa_size(e->ito);
 	// ////////////////////////////____affichage_________________________________
 
 
@@ -204,6 +142,8 @@ int x_flag(const char *str, va_list ap, t_env *e)
 		 	return(0);
 	}
 
+// int tmp;
+// 		tmp =  e->presition;
 	if (e->have_point != 0)
 	{
 		
@@ -217,8 +157,9 @@ int x_flag(const char *str, va_list ap, t_env *e)
 			put_char++;
 
 		}
-
-		while(e->presition > e->size)
+if(!(e->int_value > 0 && e->int_value < e->presition))
+				{
+		while(e->presition > e->size && (e->presition > e->int_value && e->int_value >= 0 )) //&& (e->zero != 0)))
 			{
 				
 				ft_putchar('0'); //c ou o
@@ -226,6 +167,7 @@ int x_flag(const char *str, va_list ap, t_env *e)
 				e->presition--;
 				put_char++;
 			}
+					}
 			e->presition =  tmp;
 	}
 
@@ -234,7 +176,7 @@ int x_flag(const char *str, va_list ap, t_env *e)
 		juste_print(str, e);
 	else 
 	{
-		if(e->int_value != 0 && e->have_point == 0)
+		if(e->have_point == 0)
 		{
 			while(e->int_value - e->size  - sharp_size > 0)
 			{
@@ -250,14 +192,15 @@ int x_flag(const char *str, va_list ap, t_env *e)
 				e->int_value++;
 			}
 		}
-		else if(e->int_value == 0 && e->have_point != 0)
-		{
-				juste_print(str, e);
-		}
+		// else if(e->int_value == 0 && e->have_point != 0)
+		// {
+		// 		juste_print(str, e);
+		// }
 		else if (e->int_value != 0 && e->have_point != 0)
 		{
 			if(e->have_neg == 0)
 			{
+				//e->presition =  tmp;
 				int sup;
 				if (e->presition > e->size)
 					sup = e->presition;
@@ -269,7 +212,20 @@ int x_flag(const char *str, va_list ap, t_env *e)
 					e->nc++;
 					e->int_value--;
 				}
+				// if(!(e->int_value > 0 && e->int_value < e->presition))
+				// {
+					while(e->presition > exa_size)// && e->have_neg == 0)) //&& ((e->presition < e->int_value))) //|| sharp_size != 0 || e->zero != 0))
+					{
+				
+						ft_putchar('0'); //c ou o
+						e->nc++;
+						e->presition--;
+						put_char++;
+					}
+				//}
 			}
+		
+			//e->presition =  tmp;
 				juste_print(str, e);
 			while(e->int_value + e->size + put_char  < 0)
 			{

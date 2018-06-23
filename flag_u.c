@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:50:40 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/17 11:19:39 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/22 22:47:25 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,36 @@ void  flag_u(va_list ap, t_env *e , char u)
 
 	if (u == 'U')
 		e->have_l++;
-	if (e->have_z == 0)
-	{
-		if (e->have_l == 0 && e->have_j == 0)
-			e->ito = ft_itoa_base_large(((unsigned int)va_arg(ap,unsigned int)),10, 0);
-		else if (e->have_h != 0 && e->have_l == 0)
-			e->ito = ft_itoa_base_large(((short unsigned int)va_arg(ap, unsigned int)),10, 0);
-		else if (e->have_l == 1 && e->have_j == 0)
-			e->ito = ft_itoa_base_large(((unsigned long int)va_arg(ap,unsigned long int)),10, 0);
-		else if (e->have_l == 2 && e->have_j == 0)
-			e->ito = ft_itoa_base_large(((unsigned long long int)va_arg(ap,unsigned long long int)),10, 0);
-		else if (e->have_l == 0 && e->have_j == 1)
-			e->ito = ft_itoa_base_large(((uintmax_t)va_arg(ap,uintmax_t)),10, 0);
-	}
-	else
-		e->ito = ft_itoa_base_large(((ssize_t)va_arg(ap,ssize_t)),10, 0);
+
+	if(e->have_l >= 2)
+ 		e->ito =  ft_llitoa_base((unsigned long long int)(va_arg(ap,unsigned long long int)),10,0);
+ 	else if(e->have_l == 1)
+ 		e->ito =  ft_llitoa_base((unsigned long int)(va_arg(ap,unsigned long int)),10,0);
+ 	else if (e->have_j != 0)
+ 		e->ito =  ft_llitoa_base((uintmax_t)(va_arg(ap,uintmax_t)),10,0);
+ 	else if (e->have_z != 0)
+ 		e->ito = ft_llitoa_base((ssize_t)(va_arg(ap,ssize_t)),10,0);
+ 	else if (e->have_h == 1)
+ 		e->ito = ft_llitoa_base((unsigned short int)(va_arg(ap,int)),10,0);
+ 	else if (e->have_h > 1)
+ 		e->ito = ft_llitoa_base((unsigned char)(va_arg(ap,int)),10,0);
+ 	else
+ 		e->ito =  ft_llitoa_base((unsigned int)(va_arg(ap,unsigned int)),10,0);
+	// if (e->have_z == 0)
+	// {
+	// 	if (e->have_l == 0 && e->have_j == 0)
+	// 		e->ito = ft_itoa_base_large(((unsigned int)va_arg(ap,unsigned int)),10, 0);
+	// 	else if (e->have_h != 0 && e->have_l == 0)
+	// 		e->ito = ft_itoa_base_large(((short unsigned int)va_arg(ap, unsigned int)),10, 0);
+	// 	else if (e->have_l == 1 && e->have_j == 0)
+	// 		e->ito = ft_itoa_base_large(((unsigned long int)va_arg(ap,unsigned long int)),10, 0);
+	// 	else if (e->have_l > 1 && e->have_j == 0)
+	// 		e->ito = ft_itoa_base_large(((unsigned long long int)va_arg(ap,unsigned long long int)),10, 0);
+	// 	else if (e->have_l == 0 && e->have_j == 1)
+	// 		e->ito = ft_itoa_base_large(((uintmax_t)va_arg(ap,uintmax_t)),10, 0);
+	// }
+	// else
+	// 	e->ito = ft_itoa_base_large(((ssize_t)va_arg(ap,ssize_t)),10, 0);
 	 
 	 if (e->have_point != 0 && e->presition == 0 && ft_atoi(e->ito) == 0)
 	 	return ;

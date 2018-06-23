@@ -15,8 +15,8 @@ BRICK = Core_function.o x_flag.o ft_strlen.o ft_putnbr.o ft_putstr.o ft_putchar.
 
 all: $(NAME)
 $(NAME):
-	# cd $(LIBFT_PATH) && make re
-	@gcc -c -Wall  -Wextra   $(SRC) -I $(INCLUDES)
+	# cd $(LIBFT_PATH) && make re -fsanitize=address
+	@gcc -c -Wall  -Wextra   $(SRC) -I $(INCLUDES) 
 	@ar rc $(NAME) $(BRICK)
 	@ranlib $(NAME)
 

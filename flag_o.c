@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 14:37:20 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/18 14:10:19 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/22 22:16:00 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void juste_print(t_env *e)
 	}
 }
 
-void  flag_o(va_list ap, t_env *e)
+void  flag_o(va_list ap, t_env *e,char flag)
 {
 	char c;
 	int size_sharp;
@@ -67,8 +67,23 @@ void  flag_o(va_list ap, t_env *e)
 		size_sharp = 1;
 	else
 		size_sharp = 0;
-
-	e->ito = ft_llitoa_base((long long unsigned int)(va_arg(ap,long  long unsigned int)),8, 0);
+	if (flag == 'O')
+ 		e->ito =  ft_llitoa_base((unsigned long long int)(va_arg(ap,unsigned long long int)),8,0);
+	else if(e->have_l >= 2)
+ 		e->ito =  ft_llitoa_base((unsigned long long int)(va_arg(ap,unsigned long long int)),8,0);
+ 	else if(e->have_l == 1)
+ 		e->ito =  ft_llitoa_base((unsigned long int)(va_arg(ap,unsigned long int)),8,0);
+ 	else if (e->have_j != 0)
+ 		e->ito =  ft_llitoa_base((uintmax_t)(va_arg(ap,uintmax_t)),8,0);
+ 	else if (e->have_z != 0)
+ 		e->ito = ft_llitoa_base((ssize_t)(va_arg(ap,ssize_t)),8,0);
+ 	else if(e->have_h == 1)
+ 		e->ito = ft_llitoa_base((unsigned short int)(va_arg(ap,int)),8,0);
+ 	else if(e->have_h > 1)
+ 		e->ito = ft_llitoa_base((unsigned char)(va_arg(ap,unsigned int)),8,0);
+ 	else
+ 		e->ito =  ft_llitoa_base((unsigned int)(va_arg(ap,unsigned int)),8,0);
+	//e->ito = ft_llitoa_base((long long unsigned int)(va_arg(ap,long  long unsigned int)),8, 0);
 	e->size = ft_strlen(e->ito);
 
 	if ((e->zero > 0) && (ft_atoi(e->ito) != 0 || (e->have_point == 0)))
