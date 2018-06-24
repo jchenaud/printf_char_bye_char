@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:50:40 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/22 22:47:25 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/23 23:41:29 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void  flag_u(va_list ap, t_env *e , char u)
 	// else
 	// 	e->ito = ft_itoa_base_large(((ssize_t)va_arg(ap,ssize_t)),10, 0);
 	 
-	 if (e->have_point != 0 && e->presition == 0 && ft_atoi(e->ito) == 0)
+	 if (e->have_point == 1 && e->presition == 0 && ft_atoi(e->ito) == 0)
 	 	return ;
 
 

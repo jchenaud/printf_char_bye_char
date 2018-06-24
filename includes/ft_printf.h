@@ -45,6 +45,8 @@ typedef struct  s_env
 	int k; // just int value of %d
 	//int comme_arg;
 
+	int exa_size;
+
 	
 }				t_env;
 
@@ -72,6 +74,12 @@ void		flag_s(t_env *e, va_list ap, char flag);
 void		flag_c(t_env *e, va_list ap);
 void		flag_o(va_list ap, t_env *e,char flag);
 void		flag_d(va_list ap, t_env *e);
+void		flag_d_pos(t_env *e, int *modi_size, int *mod_pres, char c);
+void		flag_d_pos_end(t_env *e, int *modi_size, int *mod_pres);
+void		flag_d_neg(t_env *e, int *modi_size, int *mod_pres, char c);
+void		flag_d_neg_end(t_env *e, int *modi_size, int *mod_pres, char c);
+
+
 void 		flag_u(va_list ap, t_env *e , char u);
 void 		flag_p(va_list ap , t_env *e);
 
@@ -87,11 +95,25 @@ int 		flag_uni_c(t_env *e, va_list ap, char flag);
 
 int			ft_atoi(const char *str);
 size_t		ft_strlen(const char *s);
-size_t		ft_strlen(const char *s);
+//size_t		ft_strlen(const char *s);
 void		ft_putchar(char c);
 void 		ft_uputchar(wchar_t c);
 
 int 		hexa_size(const char *str);
+
+void		ft_putchar_nc(char c ,t_env *e);
+void		ft_putchar_nc_int(char c , int *i,t_env *e);
+void		ft_putchar_nc_sup_int(char c , int *i,t_env *e);
+void		ft_putchar_nc_pres_int(char c , int *i,t_env *e);
+
+
+
+void	take_value_d(va_list ap, t_env *e);
+void	take_value_o(va_list ap, t_env *e, char flag);
+void	take_value_x_min(va_list ap, t_env *e);
+void	take_value_x_maj(va_list ap, t_env *e);
+
+
 //static 	int absol(int nb)
 
 

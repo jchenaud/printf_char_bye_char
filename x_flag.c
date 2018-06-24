@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/01 07:14:40 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/23 14:42:42 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/24 22:09:40 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void juste_print(const char *str,t_env *e)
 {
-	if(e->have_sharp != 0 && hexa_size(e->ito) > 0)
+	if(e->have_sharp == 1 && hexa_size(e->ito) > 0)
 	{
 		if (str[e->i + 1] == 'x')
 			write(1,"0x",2);
@@ -45,71 +45,11 @@ int hexa_size(const char *str) // retourne le nombre de cractre  exa daffiler de
 	return (-1);
 }
 
-int x_flag(const char *str, va_list ap, t_env *e)
+void x_sharp(t_env *e, int *sharp_size,  const char *str)
 {
-	// int size;
-	// char *ito = NULL;
-	if (e->ito)
-	{ 
-		free(e->ito);
-		e->ito = NULL;
-	}
-
-  //printf("have ng = %d \n",e->have_neg);
-  // printf("yolo \n");
- if (str[e->i + 1] == 'x')
- {
-
- 	if(e->have_l >= 2)
- 		e->ito =  ft_llitoa_base((unsigned long long int)(va_arg(ap,unsigned long long int)),16,0);
- 	else if(e->have_l == 1)
- 		e->ito =  ft_llitoa_base((unsigned long int)(va_arg(ap,unsigned long int)),16,0);
- 	else if (e->have_j != 0)
- 		e->ito =  ft_llitoa_base((uintmax_t)(va_arg(ap,uintmax_t)),16,0);
- 	else if (e->have_z != 0)
- 		e->ito = ft_llitoa_base((ssize_t)(va_arg(ap,ssize_t)),16,0);
- 	else if (e->have_h == 1)
- 		e->ito = ft_llitoa_base((unsigned short int)(va_arg(ap,int)),16,0);
- 	else if (e->have_h > 1)
- 		e->ito = ft_llitoa_base((unsigned char)(va_arg(ap,int)),16,0);
- 	else
- 		e->ito =  ft_llitoa_base((unsigned int)(va_arg(ap,unsigned int)),16,0);
- }
- else{
-
- 		if(e->have_l >= 2)
- 		e->ito =  ft_llitoa_base((unsigned long long int)(va_arg(ap,unsigned long long int)),16,1);
- 	else if(e->have_l == 1)
- 		e->ito =  ft_llitoa_base((unsigned long int)(va_arg(ap,unsigned long int)),16,1);
- 	else if (e->have_j != 0)
- 		e->ito =  ft_llitoa_base((uintmax_t)(va_arg(ap,uintmax_t)),16,1);
- 	else if (e->have_z != 0)
- 		e->ito = ft_llitoa_base((ssize_t)(va_arg(ap,ssize_t)),16,1);
- 	else if (e->have_h == 1)
- 		e->ito = ft_llitoa_base((unsigned short int)(va_arg(ap,int)),16,1);
- 	else if (e->have_h > 1)
- 		e->ito = ft_llitoa_base((unsigned char)(va_arg(ap,int)),16,1);
- 	else
- 		e->ito =  ft_llitoa_base((unsigned int)(va_arg(ap,unsigned int)),16,1);
- }
-	e->size = ft_strlen(e->ito);
-
-	int exa_size = hexa_size(e->ito);
-
-	// ////////////////////////////____affichage_________________________________
-
-
-	int sharp_size = 0;
-	char c;
-	int put_char = 0;
-	if (e->zero > 0 && e->have_point == 0)
-		c = '0';
-	else 
-		c = ' ';
-
-	if (e->have_sharp != 0 && exa_size != 0  && exa_size != -1)//ft_atoi(e->ito) != 0)
+	if (e->have_sharp == 1 && e->exa_size != 0  && e->exa_size != -1)//ft_atoi(e->ito) != 0)
 	{
-		if(((e->int_value <= e->size + 2)||(e->int_value > e->presition && e->have_point != 0) || (e->zero != 0)) && (e->zero == 0 || e->int_value == 0 || e->have_point == 0) )//(e->int_value == 0 || e->int_value <= e->presition + 2) || (e->zero != 0))
+		if(((e->int_value <= e->size + 2)||(e->int_value > e->presition && e->have_point == 1) || (e->zero != 0)) && (e->zero == 0 || e->int_value == 0 || e->have_point == 0) )//(e->int_value == 0 || e->int_value <= e->presition + 2) || (e->zero != 0))
 		{
 
 			if (str[e->i + 1] == 'x')
@@ -119,126 +59,101 @@ int x_flag(const char *str, va_list ap, t_env *e)
 			e->nc += 2;
 			e->have_sharp = 0;
 			if (e->zero != 0 || e->int_value <= e->presition + 2)
-				sharp_size = 2;
+				(*sharp_size) = 2;
 		}
 		else
-			sharp_size = 2;
-		//e->size += 2;
+			(*sharp_size) = 2;
 	}
+}
 
-	if (exa_size == -1 && e->have_point != 0)
+int x_point_zero(t_env *e)
+{
+	if (e->exa_size == -1 && e->have_point == 1)
 	{
-			while(e->int_value > 0)
-			{
-				ft_putchar(' ');
-				e->nc++;
-				e->int_value--;
-			}
-		if(exa_size == -1 && e->presition > 0)
-		{
-			ft_putchar('0');
-			e->nc++;
-		}
-		 	return(0);
+		while(e->int_value > 0)
+			ft_putchar_nc_sup_int(' ', &e->int_value, e);
+		if(e->exa_size == -1 && e->presition > 0)
+			ft_putchar_nc('0',e);
+		return(0);
 	}
+	return(1);
+}
 
-// int tmp;
-// 		tmp =  e->presition;
-	if (e->have_point != 0)
+void 	x_poin(t_env *e, int *put_char, int sharp_size,char *str)
+{
+	if (e->have_point == 1)
 	{
-		
 		int tmp;
 		tmp =  e->presition;
-		while(e->int_value > e->presition && e->zero != 0 && e->presition >= e->size + sharp_size)
-		{
-			ft_putchar(' ');
-			e->nc++;
-			e->int_value--;
-			put_char++;
-
-		}
-if(!(e->int_value > 0 && e->int_value < e->presition))
-				{
-		while(e->presition > e->size && (e->presition > e->int_value && e->int_value >= 0 )) //&& (e->zero != 0)))
-			{
-				
-				ft_putchar('0'); //c ou o
-				e->nc++;
-				e->presition--;
-				put_char++;
-			}
-					}
-			e->presition =  tmp;
+		while (e->int_value > e->presition && e->zero != 0 && e->presition >= e->size + sharp_size)
+			ft_putchar_nc_int_sint(' ', &(*put_char), &e->int_value, e);
+		if(!(e->int_value > 0 && e->int_value < e->presition))
+			while(e->presition > e->size && (e->presition > e->int_value && e->int_value >= 0 ))
+				ft_putchar_nc_int_sint('0', &(*put_char), &e->presition, e);
+		e->presition =  tmp;
 	}
-
-
-	if (e->int_value == 0)// && e->have_point == 0)
+	if (e->int_value == 0)
 		juste_print(str, e);
-	else 
-	{
-		if(e->have_point == 0)
+}
+
+void	x_normal(t_env *e, int sharp_size , int *put_char , char c , char *str)
+{
+	if(e->have_point == 0)
 		{
 			while(e->int_value - e->size  - sharp_size > 0)
-			{
-				ft_putchar(c);
-				e->nc++;
-				e->int_value--;
-			}
+				ft_putchar_nc_sup_int(c, &e->int_value, e);
 			juste_print(str ,e);
 			while(e->int_value + e->size + sharp_size < 0)
-			{
-				ft_putchar(' ');
-				e->nc++;
-				e->int_value++;
-			}
+				ft_putchar_nc_int(' ', &e->int_value, e);
 		}
-		// else if(e->int_value == 0 && e->have_point != 0)
-		// {
-		// 		juste_print(str, e);
-		// }
-		else if (e->int_value != 0 && e->have_point != 0)
+		else if (e->int_value != 0 && e->have_point == 1)
 		{
 			if(e->have_neg == 0)
 			{
-				//e->presition =  tmp;
 				int sup;
 				if (e->presition > e->size)
 					sup = e->presition;
 				else
 					sup = e->size;
 				while(e->int_value - sharp_size  - sup > 0)
-				{
-					ft_putchar(c);
-					e->nc++;
-					e->int_value--;
-				}
-				// if(!(e->int_value > 0 && e->int_value < e->presition))
-				// {
-					while(e->presition > exa_size)// && e->have_neg == 0)) //&& ((e->presition < e->int_value))) //|| sharp_size != 0 || e->zero != 0))
-					{
-				
-						ft_putchar('0'); //c ou o
-						e->nc++;
-						e->presition--;
-						put_char++;
-					}
-				//}
+					ft_putchar_nc_sup_int(c, &e->int_value, e);
+				while(e->presition > e->exa_size)
+					ft_putchar_nc_int_sint('0', &(*put_char) ,&e->presition, e);
 			}
-		
-			//e->presition =  tmp;
-				juste_print(str, e);
-			while(e->int_value + e->size + put_char  < 0)
-			{
-				ft_putchar(' ');
-				e->nc++;
-				e->int_value++;
-			}
+			juste_print(str, e);
+			while(e->int_value + e->size + (*put_char) < 0)
+				ft_putchar_nc_int(' ', &e->int_value, e);
 		}
+}
 
 
+int x_flag(const char *str, va_list ap, t_env *e)
+{
+	//int exa_size;
+	int sharp_size;
+	char c;
+	int put_char;
+
+	put_char = 0;
+	sharp_size = 0;
+	if (str[e->i + 1] == 'x')
+		take_value_x_min(ap, e);
+	else
+		take_value_x_maj(ap, e);
+	e->exa_size = hexa_size(e->ito);
+	if (e->zero > 0 && e->have_point == 0)
+		c = '0';
+	else 
+		c = ' ';
+	x_sharp(e, &sharp_size, str);
+	if (x_point_zero(e) == 0)
+		return(0);
+	x_poin(e, &put_char, sharp_size, str);
+	if (e->int_value != 0)
+	{
+		x_normal(e, sharp_size , &put_char , c,str);
+		
 	}
-//   printf("\nyolo 10\n");
-
 	return (0);
 }
 
@@ -248,13 +163,13 @@ void int_flag(const char *str, t_env *e)
 
 	nb = ft_int_flag_return_value(str,e->i,e);
 	e->i += ft_inc_intflag(nb);
-	
+
 	if (e->have_point == 1)
 	{
 		if (nb > 0)
-		 	e->presition = nb;
-		 else
-		 	e->presition = 0;
+			e->presition = nb;
+		else
+			e->presition = 0;
 	}
 	else 
 	{

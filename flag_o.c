@@ -6,152 +6,101 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 14:37:20 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/22 22:16:00 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/24 16:12:48 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// static int absol(int nb)
-// {
-// 	if (nb < 0 && nb != -2147483647)
-// 		return (-nb);
-// 	else if (nb > 0)
-// 		return (nb);
-// 	return (0); 
-
-// }
-
-
-static void juste_print(t_env *e)
+static void	juste_print(t_env *e)
 {
-	if (e->have_sharp != 0)
+	if (e->have_sharp == 1)
 	{
-		if ((ft_atoi(e->ito) != 0 )&& (e->have_point == 0 || e->size  >= e->presition ))
-		{
-			ft_putchar('0');
-			e->nc++;
-		}
-		else if( e->have_point == 0 && e->int_value != 0)
-		{
-			ft_putchar(' ');
-			e->nc++;
-		}
+		if ((ft_atoi(e->ito) != 0) &&
+			(e->have_point == 0 || e->size >= e->presition))
+			ft_putchar_nc('0', e);
+		else if (e->have_point == 0 && e->int_value != 0)
+			ft_putchar_nc(' ', e);
 	}
-	if (ft_atoi(e->ito) != 0 || e->have_point == 0 || e->have_sharp != 0)
+	if (ft_atoi(e->ito) != 0 || e->have_point == 0 || e->have_sharp == 1)
 	{
-		write(1,e->ito,e->size);
+		write(1, e->ito, e->size);
 		e->nc += e->size;
 	}
-	else if (e->have_point != 0 && ft_atoi(e->ito) == 0 && e->int_value !=0 && e->presition == 0)
+	else if (e->have_point == 1 && ft_atoi(e->ito) == 0
+		&& e->int_value != 0 && e->presition == 0)
+		ft_putchar_nc(' ', e);
+}
+
+void		flag_o_first_part(t_env *e, char c, int *place_zero, int abs)
+{
+	int tmp_presition;
+
+	if (e->int_value > 0 && e->have_neg != 0)
+		e->int_value *= -1;
+	abs = e->int_value;
+	if (e->int_value < 0)
+		abs *= -1;
+	if ((e->have_point == 1) && (e->presition > abs || e->presition > e->size))
 	{
-		ft_putchar(' ');
-		e->nc ++;
+		if (e->presition < abs)
+		{
+			while (e->presition < e->int_value)
+				if (e->have_neg == 0)
+					ft_putchar_nc_sup_int(' ', &e->int_value, e);
+				else
+					ft_putchar_nc_sup_int(c, &e->int_value, e);
+		}
+		tmp_presition = e->presition;
+		while (e->presition > e->size)
+			ft_putchar_nc_pres_int('0', &(*place_zero), e);
+		while (ft_atoi(e->ito) == 0 && e->presition > 0 &&
+			e->int_value >= 0 && tmp_presition > 1 && e->have_sharp == 0)
+			ft_putchar_nc_sup_int('0', &e->presition, e);
+		e->presition = tmp_presition;
 	}
 }
 
-void  flag_o(va_list ap, t_env *e,char flag)
+void		flag_o_cor(t_env *e, char c)
 {
-	char c;
 	int size_sharp;
 	int place_zero;
-	place_zero = 0;
+	int abs;
 
-	if (e->ito)
-	{
-		free(e->ito);
-		e->ito = NULL;
-	}
-	
+	abs = 0;
+	place_zero = 0;
+	size_sharp = 0;
 	if ((e->have_sharp) != 0)
 		size_sharp = 1;
-	else
+	flag_o_first_part(e, c, &place_zero, abs);
+	if (e->have_neg == 0)
+	{
+		if (c == '0' && e->have_point == 1 && e->presition == 0)
+			c = ' ';
+		while (e->int_value - size_sharp - e->size - place_zero > 0)
+			ft_putchar_nc_sup_int(c, &e->int_value, e);
+	}
+	juste_print(e);
+	if (size_sharp == 1 && ft_atoi(e->ito) == 0)
 		size_sharp = 0;
-	if (flag == 'O')
- 		e->ito =  ft_llitoa_base((unsigned long long int)(va_arg(ap,unsigned long long int)),8,0);
-	else if(e->have_l >= 2)
- 		e->ito =  ft_llitoa_base((unsigned long long int)(va_arg(ap,unsigned long long int)),8,0);
- 	else if(e->have_l == 1)
- 		e->ito =  ft_llitoa_base((unsigned long int)(va_arg(ap,unsigned long int)),8,0);
- 	else if (e->have_j != 0)
- 		e->ito =  ft_llitoa_base((uintmax_t)(va_arg(ap,uintmax_t)),8,0);
- 	else if (e->have_z != 0)
- 		e->ito = ft_llitoa_base((ssize_t)(va_arg(ap,ssize_t)),8,0);
- 	else if(e->have_h == 1)
- 		e->ito = ft_llitoa_base((unsigned short int)(va_arg(ap,int)),8,0);
- 	else if(e->have_h > 1)
- 		e->ito = ft_llitoa_base((unsigned char)(va_arg(ap,unsigned int)),8,0);
- 	else
- 		e->ito =  ft_llitoa_base((unsigned int)(va_arg(ap,unsigned int)),8,0);
-	//e->ito = ft_llitoa_base((long long unsigned int)(va_arg(ap,long  long unsigned int)),8, 0);
-	e->size = ft_strlen(e->ito);
+	while (e->int_value + e->size + size_sharp + place_zero < 0)
+		ft_putchar_nc_int(' ', &e->int_value, e);
+}
 
+void		flag_o(va_list ap, t_env *e, char flag)
+{
+	char c;
+
+	take_value_o(ap, e, flag);
 	if ((e->zero > 0) && (ft_atoi(e->ito) != 0 || (e->have_point == 0)))
 		c = '0';
-	else 
+	else
 		c = ' ';
-
 	if (e->int_value == 0 && e->have_point == 0)
 	{
 		juste_print(e);
 		return ;
-	} 
-	else
-	{
-		if (e->int_value > 0 && e->have_neg != 0)
-			e->int_value *=-1;
-		int abs = e->int_value;
-		if (e->int_value < 0)
-			abs *=-1;
-		if ((e->have_point != 0) && (e->presition > abs || e->presition > e->size))
-		{
-			if (e->presition < abs)
-			{
-				while(e->presition < e->int_value)
-				{
-					 if (e->have_neg == 0)
-					 	ft_putchar(' ');
-					 else
-						ft_putchar(c);
-					e->nc++;
-					e->int_value--;
-				}
-			}
-				int tmp_presition =  e->presition;
-				while(e->presition > e->size)
-				{
-					ft_putchar('0');
-					e->nc++;
-					e->presition--;
-					place_zero++;
-				}
-				while(ft_atoi(e->ito) == 0 && e->presition > 0 && e->int_value >= 0 && tmp_presition > 1 && e->have_sharp == 0)
-				{
-					ft_putchar('0');
-					e->nc++;
-					e->presition--;
-				}
-				e->presition =  tmp_presition;
-		}
-		if(e->have_neg == 0 )
-		{
-			if (c == '0' && e->have_point != 0  && e->presition == 0)
-				c = ' '; 
-			while (e->int_value - size_sharp - e->size - place_zero >  0)
-			{
-				ft_putchar(c);
-				e->nc++;
-				e->int_value--;
-			}
-		}
-			juste_print(e);
-			if (size_sharp == 1 && ft_atoi (e->ito) == 0 )
-				size_sharp = 0;
-			while (e->int_value + e->size + size_sharp + place_zero < 0)
-			{
-				ft_putchar(' ');
-				e->nc++;
-				e->int_value++;
-			}
 	}
+	else
+		flag_o_cor(e, c);
 }

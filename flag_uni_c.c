@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 12:53:56 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/23 14:59:25 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/23 23:41:28 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ int flag_uni_c(t_env *e, va_list ap,char flag)
 			e->nc = -1;
 			return (-1);
 		}
-		// if (e->have_point != 0)
+		// if (e->have_point == 1)
 		// {
 
 		// }

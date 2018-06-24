@@ -24,6 +24,7 @@ void ft_init(t_env *e)
 	e->have_j = 0;
 	e->have_z = 0;
 	e->ito_neg = 0;
+	e->exa_size = 0;
 
 	if (e->ito != NULL)
 	{

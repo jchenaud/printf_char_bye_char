@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 12:48:59 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/23 23:32:49 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/24 11:20:20 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void juste_write(t_env *e,char flag)
 		while(i < e->size)
 		{ 
 			add = 0;
-			if (e->have_point != 0)
+			if (e->have_point == 1)
 			{
 				e->presition -= size_wchar(e->string_wc[i]);
 				if(e->presition < 0)
@@ -57,7 +57,7 @@ void flag_s_min(t_env *e ,va_list ap , char flag, char c)
 	if(!e->string)
 		e->string = "(null)";
 	e->size = ft_strlen(e->string);
-	if (e->have_point != 0)
+	if (e->have_point == 1)
 	{
 		if (e->presition < e->size)
 			e->size = e->presition;
@@ -93,7 +93,7 @@ void flag_s_maj(t_env *e ,va_list ap , char flag, char c)
 	if(!e->string_wc)
 		e->string_wc = L"(null)";
 	e->size = ft_strlen_wchar(e->string_wc);
-	if (e->have_point != 0)
+	if (e->have_point == 1)
 	{
 		if (e->presition < e->size)
 			e->size = e->presition;
@@ -112,7 +112,7 @@ void flag_s_maj(t_env *e ,va_list ap , char flag, char c)
 		int tmp_s = e->size;
 		int k;
 		//char_can_print++; 
-		if (e->have_point != 0)
+		if (e->have_point == 1)
 		{
 			while(i < e->size)
 			{ 
@@ -173,7 +173,7 @@ void flag_s_maj(t_env *e ,va_list ap , char flag, char c)
 void flag_s(t_env *e, va_list ap, char flag)
 {
 	char c;
-	if (e->zero != 0)// && ((e->have_point != 0 && e->presition != 0 )|| e->have_point == 0))
+	if (e->zero != 0 && e->have_l == 0 )// && ((e->have_point == 1 && e->presition != 0 )|| e->have_point == 0))
 		c = '0';
 	else
 		c = ' ';
