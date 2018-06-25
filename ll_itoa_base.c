@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ll_itoa_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/25 15:06:38 by jchenaud          #+#    #+#             */
+/*   Updated: 2018/06/25 17:47:33 by jchenaud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	ft_size(long long unsigned int nbr, int base)
@@ -13,7 +25,8 @@ static int	ft_size(long long unsigned int nbr, int base)
 	return (i);
 }
 
-static void	ft_recursive_min(char *str, long long unsigned int nbr, int base, int i)
+static void	ft_recursive_min(char *str,
+	long long unsigned int nbr, int base, int i)
 {
 	char *t;
 
@@ -25,7 +38,8 @@ static void	ft_recursive_min(char *str, long long unsigned int nbr, int base, in
 	}
 }
 
-static void	ft_recursive_maj(char *str, long long unsigned int nbr, int base, int i)
+static void	ft_recursive_maj(char *str,
+	long long unsigned int nbr, int base, int i)
 {
 	char *t;
 
@@ -44,7 +58,6 @@ char		*ft_llitoa_base(long long unsigned int nbr, int base, char maj)
 
 	nb = ft_size(nbr, base);
 	str = (char *)malloc(sizeof(char) * (nb + 1));
-	//printf("adres of ito : %p\n",str);
 	if (str == NULL)
 		return (NULL);
 	if (maj == 0)

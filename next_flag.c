@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag_pc.c                                          :+:      :+:    :+:   */
+/*   next_flag.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/27 10:50:35 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/24 22:44:31 by jchenaud         ###   ########.fr       */
+/*   Created: 2018/06/25 13:54:35 by jchenaud          #+#    #+#             */
+/*   Updated: 2018/06/25 13:56:31 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	flag_pc(t_env *e)
+char	next_flag(const char *str, int i)
 {
-	char c;
+	char	*int_flag;
+	int		f;
+	int		k;
 
-	if (e->zero != 0)
-		c = '0';
-	else
-		c = ' ';
-	while (e->int_value - 1 > 0)
+	k = 0;
+	int_flag = "1234567890.-  ";
+	while (str[i + k])
 	{
-		ft_putchar(c);
-		e->nc++;
-		e->int_value--;
+		f = 0;
+		while (str[i + k] != int_flag[f] && int_flag[f])
+			f++;
+		if (!(int_flag[f]))
+			return (str[i + k]);
+		k++;
 	}
-	ft_putchar('%');
-	e->nc++;
-	while (e->int_value + 1 < 0)
-	{
-		ft_putchar(' ');
-		e->nc++;
-		e->int_value++;
-	}
+	return (0);
 }
