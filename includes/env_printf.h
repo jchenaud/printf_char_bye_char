@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_printf.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/25 22:24:25 by jchenaud          #+#    #+#             */
+/*   Updated: 2018/06/25 23:34:41 by jchenaud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#ifndef ENV_PRINTF_H
+# define ENV_PRINTF_H
 
 typedef struct		s_env
 {
@@ -36,3 +49,4 @@ typedef struct		s_env
 	int				tmp_s;
 	int				ret;
 }					t_env;
+#endif

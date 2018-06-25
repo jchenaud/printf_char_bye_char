@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 09:01:14 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/22 10:25:42 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/25 22:06:43 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-size_t ft_strlen_wchar(const wchar_t *s)
+size_t	ft_strlen_wchar(const wchar_t *s)
 {
 	size_t i;
 

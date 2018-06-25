@@ -6,18 +6,21 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 18:00:28 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/25 18:06:29 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/25 23:33:21 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <limits.h>
-#include <wchar.h>
-#include <stdlib.h>
-#include "env_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+
+# include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
+# include <stdint.h>
+# include <limits.h>
+# include <wchar.h>
+# include <stdlib.h>
+# include "env_printf.h"
 
 int			ft_printf(const char *str, ...);
 char		*ft_itoa_base(unsigned int nbr, int base, char maj);
@@ -26,6 +29,8 @@ char		*ft_itoa_base_large(uintmax_t nbr, int base, char maj);
 char		*ft_neg_litoa_base(intmax_t nbr, int base, char maj);
 char		*ft_llitoa_base(long long unsigned int nbr, int base, char maj);
 int			x_flag(const char *str, va_list ap, t_env *e);
+int			x_point_zero(t_env *e);
+void		x_sharp(t_env *e, const char *str);
 void		int_flag(const char *str, t_env *e);
 char		next_flag(const char *str, int i);
 int			have_modi_flag(const char c);
@@ -71,3 +76,5 @@ void		take_value_o(va_list ap, t_env *e, char flag);
 void		take_value_x_min(va_list ap, t_env *e);
 void		take_value_x_maj(va_list ap, t_env *e);
 void		take_value_u(va_list ap, t_env *e, char flag);
+int			difzero(char *n, int s);
+#endif
