@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 12:53:56 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/25 13:17:02 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/26 11:52:11 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int			flag_uni_c(t_env *e, va_list ap, char flag)
 		c = ' ';
 	wc = va_arg(ap, wchar_t);
 	if ((wc > 0xD7FF && wc < 0xE000) ||
-		(wc > 0x2FFFF && wc < 0xE0000) || (wc > 0x10FFFF))
+		(wc > 0x2FFFF && wc < 0xE0000) || (wc >= 0x10FFFE))
 		return (return_eror(e));
 	while (e->int_value > 1)
 		ft_putchar_nc_sup_int(c, &e->int_value, e);

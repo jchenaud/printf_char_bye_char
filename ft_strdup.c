@@ -6,11 +6,11 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:38:54 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/10/29 13:51:51 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/26 11:16:28 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 char	*ft_strdup(const char *s)
 {

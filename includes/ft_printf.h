@@ -6,7 +6,7 @@
 /*   By: jchenaud <jchenaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 18:00:28 by jchenaud          #+#    #+#             */
-/*   Updated: 2018/06/26 00:18:58 by jchenaud         ###   ########.fr       */
+/*   Updated: 2018/06/26 11:41:17 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,6 @@ void		take_value_x_min(va_list ap, t_env *e);
 void		take_value_x_maj(va_list ap, t_env *e);
 void		take_value_u(va_list ap, t_env *e, char flag);
 int			difzero(char *n, int s);
+void		ft_putstr(char const *s);
+
 #endif
